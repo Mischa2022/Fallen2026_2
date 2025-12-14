@@ -5,10 +5,12 @@
 #include <SPI.h>
 #include <MFRC522.h>
 #include <Wire.h> 
-
+#include <LiquidCrystal_I2C.h>
 //*****************************************************************************************//
 
-
+#define lCD_Version 3
+//1= großes LCD gelb  3= große LCD blau 2= kleines LCD gelb  4= kleines LCD blau 5=Dominik
+//*****************************************************************************************//
 //RFID
 #define RST_PIN         9          // Configurable, see typical pin layout above
 #define SS_PIN          10         // Configurable, see typical pin layout above
@@ -81,28 +83,58 @@ unsigned long LifeCleaner_effekt_read=0;     //read-buffer für Auswirkung
 
 //*****************************************************************************************//
 //RTC
-//RTC_DS1307 RTC;
-RTC_DS3231 RTC;
+RTC_DS1307 RTC;
 //DateTime t;
 unsigned long aktuell_time=0;        // buffer für aktuelle zeit
 //int con_tag; //puffer um zu bestimmen, welcher tag aktuell läuft 
 
 //*****************************************************************************************//
-//Dominik
-/*
+//Anzeige 
+
+#if lCD_Version == 1
+LiquidCrystal_I2C lcd(0x3f,20,4);//Gelb 4 Reihen
+int anzeige_groesse=0;
+int  LED_B_Pin   = 7;
+int  LED_G_Pin  =  6;
+int  LED_R_Pin   = 5;
+int  LED_GND_Pin=  4;
+#endif
+
+#if lCD_Version == 3
+LiquidCrystal_I2C lcd(0x27,20,4); //Blau 4 Reihen
+int anzeige_groesse=0;
+int  LED_B_Pin   = 7;
+int  LED_G_Pin  =  6;
+int  LED_R_Pin   = 5;
+int  LED_GND_Pin=  4;
+#endif
+
+#if lCD_Version == 2
+LiquidCrystal_I2C lcd(0x3f,16,2); //Gelb 2 Reihen
+int anzeige_groesse=1;
+int  LED_B_Pin   = 7;
+int  LED_G_Pin  =  6;
+int  LED_R_Pin   = 5;
+int  LED_GND_Pin=  4;
+#endif
+
+#if lCD_Version == 4
+LiquidCrystal_I2C lcd(0x27,16,2); //Blau 2 Reihen
+int anzeige_groesse=1;
+int  LED_B_Pin   = 7;
+int  LED_G_Pin  =  6;
+int  LED_R_Pin   = 5;
+int  LED_GND_Pin=  4;
+#endif
+
+#if lCD_Version == 5
+int anzeige_groesse=0;
 int  LED_B_Pin   = 7;
 int  LED_G_Pin  =  6;
 int  LED_R_Pin   = 5;
 int  LED_GND_Pin=  4;
 LiquidCrystal_I2C lcd(0x3f,20,4);//Gelb
-*/
-//Anzeige 
-
-
-int  LED_B_Pin   = 7;
-int  LED_G_Pin  =  6;
-int  LED_R_Pin   = 5;
-int  LED_GND_Pin=  4;
+#endif
 
 
 int start=0; // anzeige für zeit
@@ -143,10 +175,9 @@ void setup()
   mfrc522.PCD_Init();
 
       RTC.begin();
-      /*
   if (! RTC.isrunning()) {
     RTC.adjust(DateTime(__DATE__, __TIME__));
-  }*/
+  }
   
 
 
@@ -166,7 +197,8 @@ digitalWrite(LED_GND_Pin,!led_on);
 digitalWrite(analogeAnzeige_Pin,LOW);
 
 
-
+lcd.init();
+lcd.backlight();
 
 }
 
@@ -176,24 +208,71 @@ void loop(){
     DateTime now = RTC.now(); 
     aktuell_time=now.unixtime();
     
-//raywert=0;
-//raywert2=0;
+
 
 if(start==0){ // um einmal die uhrzeit anzuzeigen
    Serial.printf("Momentane Zeit: %4d-%02d-%02d %02d:%02d:%02d", now.year(), now.month(), now.day(), now.hour(), now.minute(), now.second());
       Serial.println();
-
+        lcd.setCursor(0, 0);
+        lcd.print(now.year(), DEC);
+        lcd.print('/');
+        lcd.print(now.month(), DEC);
+        lcd.print('/');
+        lcd.print(now.day(), DEC);
+        lcd.setCursor(0, 1);
+        lcd.print(now.hour(), DEC);
+        lcd.print(':');
+        lcd.print(now.minute(), DEC);
+        lcd.print(':');
+        lcd.print(now.second(), DEC);
+   
+    delay(2000);
+    lcd.clear();
     
     start=1;
 }
 
  if( aktuell_time<1640991601||aktuell_time > 1893452460){
-  Serial.println("Uhr ist verstellt");
-
+  Serial.println(F("Uhr ist verstellt"));
+   lcd.setCursor(0, 0);
+   lcd.print("Uhr ist verstellt");
+   
+    lcd.clear();
+    delay(2000);
 modus=1;
  }
-
-
+ if(anzeige_groesse==0){
+   lcd.setCursor(0, 0);
+      lcd.print("Rad|Bio|Che|");
+      lcd.setCursor(11,1);
+      lcd.print("|");
+      lcd.setCursor(3,1);
+      lcd.print("|");
+      lcd.setCursor(7,1);
+      lcd.print("|");
+      lcd.setCursor(3,2);
+      lcd.print("|");
+      lcd.setCursor(7,2);
+      lcd.print("|");
+      lcd.setCursor(11,2);
+      lcd.print("|");
+      lcd.setCursor(11,3);
+      lcd.print("|");
+      lcd.setCursor(3,3);
+      lcd.print("|");
+      lcd.setCursor(7,3);
+      lcd.print("|");
+ }
+    if(anzeige_groesse==1){
+       lcd.setCursor(0, 0);
+       lcd.print(" Grn|Yel|Red ");   
+       lcd.setCursor(4, 1);
+       lcd.print("|");  
+       lcd.setCursor(8, 1);
+       lcd.print("|");  
+     
+  }
+ 
 // fake modus
 Poti_read=analogRead(poti_Pin);
 //Serial.print("Analog read:");Serial.println(Poti_read);
@@ -202,7 +281,14 @@ Poti_messwert=map( Poti_read,0,1000,0,450);
 if(fakemodus==false){Poti_read=0;Poti_messwert=0;}
 
 if(Poti_read==0){
-
+  if(anzeige_groesse==0){
+    lcd.setCursor(17, 0);
+    lcd.print("   ");
+    }
+  if(anzeige_groesse==1){
+      lcd.setCursor(13, 0);
+      lcd.print("   ");
+    }  
 analoge_anzeige(0);
   if(modus==1){
     digitalWrite(LED_B_Pin,led_on);
@@ -211,9 +297,52 @@ analoge_anzeige(0);
 
 }
 if(Poti_read!=0){
-
+  if(anzeige_groesse==0){
+    lcd.setCursor(17, 0);
+    lcd.print("  M");
+  }
+  if(anzeige_groesse==1){
+      lcd.setCursor(13, 0);
+      lcd.print("  M");
+    }
 anzeige(Poti_messwert);
 
+}
+else{
+  if(anzeige_groesse==0){
+   lcd.setCursor(0, 0);
+      lcd.print("Rad|Bio|Che|");
+      lcd.setCursor(12, 0);
+      lcd.print("    ");
+      lcd.setCursor(11,1);
+      lcd.print("|");
+      lcd.setCursor(3,1);
+      lcd.print("|");
+      lcd.setCursor(7,1);
+      lcd.print("|");
+      lcd.setCursor(3,2);
+      lcd.print("|");
+      lcd.setCursor(7,2);
+      lcd.print("|");
+      lcd.setCursor(11,2);
+      lcd.print("|");
+      lcd.setCursor(11,3);
+      lcd.print("|");
+      lcd.setCursor(3,3);
+      lcd.print("|");
+      lcd.setCursor(7,3);
+      lcd.print("|");
+      display_2(0);
+  }
+    if(anzeige_groesse==1){
+       lcd.setCursor(0, 0);
+       lcd.print(" Grn|Yel|Red ");   
+       lcd.setCursor(4, 1);
+       lcd.print("|");  
+       lcd.setCursor(8, 1);
+       lcd.print("|");  
+      display_1(0);
+  }
 }
 
   if(modus==0){
@@ -228,7 +357,7 @@ anzeige(Poti_messwert);
 
 sorte=Mediread_MFRC522();
 if(sorte!=0){
-      mfrc522.PICC_HaltA();   //finale stopfunktion
+    mfrc522.PICC_HaltA();   //finale stopfunktion
     mfrc522.PCD_StopCrypto1();//finale stopfunktion
 }
       
@@ -239,7 +368,6 @@ if(sorte!=0){
   if( Con_Start_read!=0){ // enthält die karte spielerdaten oder nur fake für plots
  new_ray();
  raywert=raywert2; //ursprünglicher raywert wird durch neuberechneten ersetzt für anzeige
-// Serial.print("Spieler :");   Serial.println(raywert);
 
    anzeige(raywert); 
 
@@ -250,10 +378,17 @@ delay(2000);
   }
 
   else if(Con_Start_read==0&&raywert==0){ 
-
+    if(anzeige_groesse==0){
+      lcd.setCursor(17, 0);
+      lcd.print(" LR");
+    }
+    if(anzeige_groesse==1){
+      lcd.setCursor(13, 0);
+      lcd.print(" LR");
+    }
       anzeige(raywert);
-  Serial.print("Leer");
-  Serial.println("");
+  Serial.print(F("Leer"));
+  Serial.println(F(""));
   /*
      newkey();// falls Dongel bereits eingecheckt
    delay(100);
@@ -267,10 +402,17 @@ delay(2000);
     mfrc522.PCD_StopCrypto1();//finale stopfunktion
   }
 else{ //für plotkarten, die nur raywert haben
-  //  Serial.print("PLOT: ");       Serial.println(raywert);
 
+    if(anzeige_groesse==0){
+      lcd.setCursor(17, 0);
+      lcd.print("PLT");
+    }
+    if(anzeige_groesse==1){
+      lcd.setCursor(13, 0);
+      lcd.print("PLT");
+    }
       anzeige(raywert);
-  Serial.print("Plot-Ray:");
+  Serial.print(F("Plot-Ray:"));
   Serial.println(raywert);
   
 delay(2000);
@@ -281,7 +423,7 @@ delay(2000);
 
  }
  else{
- // Serial.println("Error");
+ // Serial.println(F("Error"));
 
       mfrc522.PICC_HaltA();   //finale stopfunktion
     mfrc522.PCD_StopCrypto1();//finale stopfunktion

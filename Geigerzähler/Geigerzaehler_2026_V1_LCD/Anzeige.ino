@@ -8,46 +8,7 @@ void anzeige(unsigned long basis){
 int pause;
 int wiederholung;
 
-if (basis>=450){basis=449;}
-
-        if(basis==0){}
-        if(basis>0&&basis<=50){
-          digitalWrite(LED_G_Pin,led_on);
-          }  
-        if(basis>50&&basis<=100){
-          digitalWrite(LED_G_Pin,led_on);
-          } 
-        if(basis>100&&basis<=150){
-          digitalWrite(LED_G_Pin,led_on);
-          }  
-        if(basis>150&&basis<=200){
-          digitalWrite(LED_R_Pin,led_on);
-          digitalWrite(LED_G_Pin,led_on);
-          } 
-        if(basis>200&&basis<=250){
-          digitalWrite(LED_R_Pin,led_on);
-          digitalWrite(LED_G_Pin,led_on);
-          } 
-        if(basis>250&&basis<=300){
-          digitalWrite(LED_R_Pin,led_on);
-          digitalWrite(LED_G_Pin,led_on);
-          } 
-        if(basis>300&&basis<=350){
-          digitalWrite(LED_R_Pin,led_on);
-          } 
-        if(basis>350&&basis<=400){
-          digitalWrite(LED_R_Pin,led_on);
-          } 
-        if(basis>400){
-          digitalWrite(LED_R_Pin,led_on);
-          } 
-          
-analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
-
-//buzzerplay
-pause= 500-basis;
-//Serial.print("pause:");Serial.println(pause);
-wiederholung=2000/(2*pause);
+if (basis>=501){basis=449;}
 
 if(anzeige_groesse==0){
 display_2(basis);
@@ -56,7 +17,128 @@ if(anzeige_groesse==1){
 display_1(basis);
 }
 
-buzzer_play(wiederholung,pause); 
+  if(anzeige_groesse==0){
+    lcd.setCursor(17, 0);
+          if(archtype_read==100){
+          Serial.println(F("Mensch"));
+          lcd.print("HMN");
+          } 
+          
+          if(archtype_read==360){
+          Serial.println(F("Mutant"));
+          lcd.print("MUT");
+          }
+          
+          if(archtype_read==250){
+          lcd.print("BKR");
+          }
+      }
+    
+   if(anzeige_groesse==1){
+      lcd.setCursor(13, 0);
+          if(archtype_read==100){
+          lcd.print("HMN");
+          } 
+          if(archtype_read==360){
+          lcd.print("MUT");
+          }
+          if(archtype_read==250){
+          lcd.print("BKR");
+          }
+      }
+
+
+        if(basis==0){}
+        if(basis>0&&basis<=50){
+          digitalWrite(LED_G_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          }  
+          
+        if(basis>50&&basis<=100){
+          digitalWrite(LED_G_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          } 
+          
+        if(basis>100&&basis<=150){
+          digitalWrite(LED_G_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          }  
+          
+        if(basis>150&&basis<=200){
+          digitalWrite(LED_R_Pin,led_on);
+          digitalWrite(LED_G_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          } 
+          
+        if(basis>200&&basis<=250){
+          digitalWrite(LED_R_Pin,led_on);
+          digitalWrite(LED_G_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          }
+          
+        if(basis>250&&basis<=300){
+          digitalWrite(LED_R_Pin,led_on);
+          digitalWrite(LED_G_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          } 
+          
+        if(basis>300&&basis<=350){
+          digitalWrite(LED_R_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);
+          } 
+          
+        if(basis>350&&basis<=400){
+          digitalWrite(LED_R_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);  
+          } 
+          
+        if(basis>400&&basis<=450){
+          digitalWrite(LED_R_Pin,led_on);
+          analoge_anzeige(basis); //funktion um analoge anzeige anzusteuern
+          pause= 500-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);  
+          } 
+
+        if(basis>=500){
+          for( int x=0;x<5;x++){
+          digitalWrite(LED_R_Pin,led_on);
+          analogWrite(analogeAnzeige_Pin,255);
+          delay(120);
+          digitalWrite(LED_R_Pin,!led_on);
+          analogWrite(analogeAnzeige_Pin,0);
+          delay(120);
+          }
+
+          pause= 550-basis;
+          wiederholung=2000/(2*pause);
+          buzzer_play(wiederholung,pause);  
+          analogWrite(analogeAnzeige_Pin,0);
+          } 
 
  digitalWrite(LED_R_Pin,!led_on);
  digitalWrite(LED_G_Pin,!led_on);
@@ -96,7 +178,7 @@ if(y!=oldt){
   if(t<y){
     for( t=oldt;t<=y;t++){  
  analogWrite(analogeAnzeige_Pin,t);
- delay(5);
+ delay(3);
   if(t==oldt){
       oldt=y;
     }
@@ -105,7 +187,7 @@ if(y!=oldt){
     if(t>y){
     for( t=oldt;t>=y;t--){  
  analogWrite(analogeAnzeige_Pin,t);
- delay(5);
+ delay(3);
     if(t==oldt){
       oldt=y;
     }

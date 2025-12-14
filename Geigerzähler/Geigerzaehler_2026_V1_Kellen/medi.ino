@@ -15,42 +15,42 @@ A= rfid_reading(knownKeys[0],10);
      art= ergebnisB- medi; 
          switch (art) {
      case 177:
-     Serial.println("Dekon gefunden"); 
+     Serial.println(F("Medi: Dekon gefunden")); 
      sorte=3;
    //  ziel_char='b';
    //  ziel_long=sorte;
      break;   
                                    
      case 255:// original
-     Serial.println("NanoClean gefunden");
+     Serial.println(F("Medi: NanoClean gefunden"));
      sorte=2;
   //   ziel_char='b';
   //   ziel_long=sorte;
      break;
                                
      case 367:
-     Serial.println("Blutwäsche gefunden"); 
+     Serial.println(F("Medi: Blutwäsche gefunden")); 
      sorte=5;
    //  ziel_char='b';
    //  ziel_long=sorte;
      break;   
                             
      case 583:
-     Serial.println("Cleanray gefunden"); 
+     Serial.println(F("Medi: Cleanray gefunden")); 
      sorte=6;
    //  ziel_char='b';
    //  ziel_long=sorte;
      break;
                             
      case 722:
-     Serial.println("LifeCleaner gefunden"); 
+     Serial.println(F("Medi: LifeCleaner gefunden")); 
      sorte=4;
    //  ziel_char='b';
    //  ziel_long=sorte;
      break;
                             
      default:
-     Serial.println("nichts gefunden"); 
+     
      sorte=0;
      break;
      }
