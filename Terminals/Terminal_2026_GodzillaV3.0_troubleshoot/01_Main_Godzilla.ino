@@ -10,6 +10,21 @@ aktuelle_millis=millis();
 
   serial_read(ziel_char,ziel_long,'\n');
 //Serial.print("Char:");Serial.print(ziel_char);Serial.print(" ziel_long:");Serial.println(ziel_long);
+
+  //if ( ! mfrc522.PICC_IsNewCardPresent()){
+ // if ( ! mfrc522.PICC_ReadCardSerial()){     
+    if ( ! mfrc522.PICC_IsNewCardPresent()&&! mfrc522.PICC_ReadCardSerial()){
+    digitalWrite(ledPin,LOW);
+     
+    }
+   else {  
+   digitalWrite(ledPin,HIGH);
+   
+  }
+
+
+
+
   switch (ziel_char){
 
 case 'u':
@@ -210,44 +225,6 @@ break;
               
       break;
   
-  }  
-
-  
-
-
-
-  
-  if ( ! mfrc522.PICC_IsNewCardPresent()){
-       
-    digitalWrite(ledPin,LOW);
-     
- 
-    wdt_reset();
-    return;
-    }
-   else {  
-   digitalWrite(ledPin,HIGH);
-   
- 
-  }
- 
-  if ( ! mfrc522.PICC_ReadCardSerial()){
-    
-    wdt_reset();  
-    return;
-  }
-  else{
-  
-  }
-
-
-
-if(ziel_char==' '){
-
-  serial_read(ziel_char,ziel_long,'\n');
-}
-  
-  switch (ziel_char){   
 
 //Ausfuehrliche Analyse
     case '%':           
@@ -557,6 +534,7 @@ while(warten==false){
         
     mfrc522.PICC_HaltA();   //finale stopfunktion
     mfrc522.PCD_StopCrypto1();//finale stopfunktion
+    mfrc522.PCD_AntennaOff();
     reset_variablen();
      msg1="";
      msg2="";

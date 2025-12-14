@@ -362,6 +362,6 @@ myprint("-----------------------------------------------------------------------
    
       myprint("Nun Dongel auflegen","","",false,true,false,1,0);
  
-                 
+mfrc522.PCD_AntennaOff();                 
 //wdt_enable(WDTO_8S);
 }

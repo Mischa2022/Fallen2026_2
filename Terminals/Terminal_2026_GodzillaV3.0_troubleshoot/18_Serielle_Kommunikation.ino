@@ -77,6 +77,8 @@ else{
     wdt_reset();
     ubergabe_char=char_read[0];
     ubergabe=wert; 
+    mfrc522.PCD_AntennaOn();
+    delay(10);
     counter=0;
     read_String="";
 //    Serial.print("Was ich raus gemacht habe: ");Serial.print(ubergabe_char);Serial.print(" ");Serial.println(ubergabe);

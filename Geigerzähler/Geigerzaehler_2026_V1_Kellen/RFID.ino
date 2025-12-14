@@ -54,17 +54,17 @@ long rfid_reading(byte keys[],byte block) {
  
   status = mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, trailorBlock, &key, &(mfrc522.uid)); 
   if (status != MFRC522::STATUS_OK) {
- //   Serial.print("Key A trailorblock "); // Ausgabe ist für Test nicht mehr nötig
+ //   Serial.print(F("Key A trailorblock ")); // Ausgabe ist für Test nicht mehr nötig
  //   Serial.print(trailorBlock);
- //   Serial.println(" nicht ok");
+ //   Serial.println(F(" nicht ok"));
     return 1;
   }
 
   status = mfrc522.MIFARE_Read(block, buffer1, &len);
   if (status != MFRC522::STATUS_OK) {
- //   Serial.print("Lesen Block "); // Ausgabe ist für Test nicht mehr nötig
+ //   Serial.print(F("Lesen Block ")); // Ausgabe ist für Test nicht mehr nötig
  //   Serial.print(block);
- //   Serial.println(" nicht ok");
+ //   Serial.println(F(" nicht ok"));
     return 1;
   }
    
@@ -82,7 +82,7 @@ long rfid_reading(byte keys[],byte block) {
   ergebnisA=varA5;
 
 /* //Ausgabe wird durch Check_RFID übernommen
-Serial.print("ErgebnisA: ");
+Serial.print(F("ErgebnisA: "));
 Serial.println(ergebnisA);
 */
   WERTB0=buffer1[11],DEC;
@@ -99,7 +99,7 @@ Serial.println(ergebnisA);
   ergebnisB=varB5;
 
 /*    //Ausgabe wird durch Check_RFID übernommen   
-Serial.print("ErgebnisB: ");
+Serial.print(F("ErgebnisB: "));
 Serial.println(ergebnisB);
 */
 
@@ -194,9 +194,9 @@ int writing(byte keys[],byte block,unsigned long variableA, unsigned long variab
   status = mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_B, trailorBlock, &key, &(mfrc522.uid)); 
   if (status != MFRC522::STATUS_OK) {
 
-     Serial.print("Key B trailorblock ");
+     Serial.print(F("Key B trailorblock "));
     Serial.print(trailorBlock);
-     Serial.println(" nicht ok");
+     Serial.println(F(" nicht ok"));
 //       Display.setCursor( 0, 20);
 //  Display.print("schreiben nicht ok");
  
@@ -209,9 +209,9 @@ int writing(byte keys[],byte block,unsigned long variableA, unsigned long variab
   status = mfrc522.MIFARE_Write(block, buffer, 16);
   if (status != MFRC522::STATUS_OK) {   
 
-     Serial.print("Schreiben Block ");
+     Serial.print(F("Schreiben Block "));
      Serial.print(block);
-     Serial.println(" nicht ok");
+     Serial.println(F(" nicht ok"));
 //       Display.setCursor( 0, 20);
 //  Display.print("schreiben nicht ok");
  
@@ -221,9 +221,9 @@ int writing(byte keys[],byte block,unsigned long variableA, unsigned long variab
   
   } 
   else {
-    Serial.print("Schreiben Block ");
+    Serial.print(F("Schreiben Block "));
     Serial.print(block);
-    Serial.println(" ok");
+    Serial.println(F(" ok"));
 //      Display.setCursor( 0, 20);
 //  Display.print("schreiben ok");
  
@@ -246,7 +246,7 @@ void newkey(){
   }
   
   new_key_value=id_check-id_value;
-  Serial.print("KEY:");
+  Serial.print(F("KEY:"));
   Serial.println(    new_key_value);    
   varAD11= new_key_value%256;
   varAD1= varAD11;   
@@ -318,14 +318,14 @@ boolean try_keyB(MFRC522::MIFARE_Key *key,byte block,int counter1)
     else {
        feedback=1; result = true;
        
-    //    Serial.print("Block:");
+    //    Serial.print(F("Block:"));
     /*    Serial.print(block);
-        Serial.print(" | KeyB:");
+        Serial.print(F(" | KeyB:"));
         Serial.print(counter1);
         
-        Serial.print(" = ");
+        Serial.print(F(" = "));
         dump_byte_array((*key).keyByte, MFRC522::MF_KEY_SIZE);
-        Serial.println(" | ");*/
+        Serial.println(F(" | "));*/
         key_used=counter1;
         
     }
