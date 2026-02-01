@@ -239,7 +239,6 @@ if(sorte!=0){
  new_ray();
  raywert=raywert2; //ursprünglicher raywert wird durch neuberechneten ersetzt für anzeige
 
-
     if(archtype_read==100){ //Mensch
       Serial.print(F("Mensch :"));   Serial.println(raywert);
         anzeige(raywert); 

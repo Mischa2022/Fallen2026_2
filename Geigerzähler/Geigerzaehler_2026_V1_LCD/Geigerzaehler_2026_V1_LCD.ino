@@ -8,7 +8,7 @@
 #include <LiquidCrystal_I2C.h>
 //*****************************************************************************************//
 
-#define lCD_Version 3
+#define lCD_Version 4
 //1= großes LCD gelb  3= große LCD blau 2= kleines LCD gelb  4= kleines LCD blau 5=Dominik
 //*****************************************************************************************//
 //RFID
