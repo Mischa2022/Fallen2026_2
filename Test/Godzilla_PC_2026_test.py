@@ -79,9 +79,9 @@ if mode ==2:
         nachrichtC = ["a1\n", "%\n", "a2\n", "a3\n", "a4\n", "a5\n", "a6\n", "a10\n"]
         farbenC = ["darkblue", "darkgreen", "gold", "darkred", "white", "darkgray", "gray", "grey"]
 
-        listeD = ["Konfig", "Checkinlog lesen", "Buchungslog lesen", "Medilog lesen",'Radio on','Radio off']
-        nachrichtD = ["u\n", "f\n", "g\n", "k\n","s\n","S\n"]
-        farbenD = ["white", "darkgray", "gray", "grey","green","red"]
+        listeD = ["Konfig", "Checkinlog lesen", "Buchungslog lesen", "Medilog lesen"]
+        nachrichtD = ["u\n", "f\n", "g\n", "k\n"]
+        farbenD = ["white", "darkgray", "gray", "grey"]
 
         listeE=['Ray', 'Uhr', 'Rechte NBCLD']
         nachrichtE = ["r", "j", "o"]
@@ -90,8 +90,8 @@ if mode ==2:
 port=ports[0]
 
 # Serielle Verbindung (stellen Sie sicher, dass COM-Port und Baudrate korrekt sind)
- ser = serial.Serial('COM3', 57600, timeout=1)
-#ser = serial.Serial(port, 57600, timeout=1)
+# ser = serial.Serial('COM4', 57600, timeout=1)
+ser = serial.Serial(port, 57600, timeout=1)
 
 # Funktion zum Senden von Daten über die serielle Verbindung
 def send_command(command):
