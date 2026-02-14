@@ -405,9 +405,13 @@ if(variante==1||variante==10){
 
     if(variante==1||variante==10){
   
-  if(rights>0&&rights<11112){
-    myprint("Rechte:NBCLD","","",true,true,false,1,port);
+  if(rights>0&&rights<111112){
+    myprint("Rechte:RNBCLD","","",true,true,false,1,port);
     myprint("       ","","",true,false,false,1,port);
+
+ if(rights<100000){
+  
+  myprint("0","","",true,false,false,1,port);}
 
   if(rights<10000){
   

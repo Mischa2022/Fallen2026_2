@@ -2,6 +2,7 @@
  * 
  * reset_variablen // 2025 loeschen aller zwischengepeicherten Werte aus den Variablen
  * buzzer_play     // 2025 fuer toene
+ * redhead
  * rechte_check    // 2025 ueberpruefen ob ein Dongel fuer Buchungen Rechte enthaelt
  */
  

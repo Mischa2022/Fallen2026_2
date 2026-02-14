@@ -124,7 +124,7 @@ int lifecleaner_write(unsigned long effekt){
 
 //*****************************************************************************************//
 int medi_rechte(unsigned long wert){
-      if(wert>11111){wert=wert/10;}
+      if(wert>111111){wert=wert/10;}
       myprint("Medirechte schreiben gestartet","","",true,true,false,1,port);
  
       newkey(); // falls Dongel bereits eingecheckt

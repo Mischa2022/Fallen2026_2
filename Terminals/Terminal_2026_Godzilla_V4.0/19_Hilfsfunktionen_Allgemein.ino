@@ -3,6 +3,7 @@
  * reset_variablen // 2025 loeschen aller zwischengepeicherten Werte aus den Variablen
  * buzzer_play     // 2025 fuer toene
  * prozess         // 2025 fuer die LCDausgabe um bewegung zu zeigen
+ * redhead
  * rechte_check    // 2025 ueberpruefen ob ein Dongel fuer Buchungen Rechte enthaelt
  */
  
@@ -97,13 +98,16 @@ wdt_reset();
 Anzeige_update =true;//automatisch immer frei, sobald Rechte vorhanden
 Anzeige_drawback =true;//automatisch immer frei, sobald Rechte vorhanden
 
-//Serial.println("NBCLD");
+//Serial.println("RNBCLD");
+
+if(rechte_basis>=100000){Anzeige_redhead =true;buffer_wert[0]=rechte_basis-100000;}
+else{Anzeige_redhead =false;buffer_wert[0]=rechte_basis;}
 
 if(rechte_basis>=10000){Anzeige_Nanoclean =true;buffer_wert[0]=rechte_basis-10000;}
 else{Anzeige_Nanoclean =false;buffer_wert[0]=rechte_basis;}
 
-if(buffer_wert[0]>=1000&&buffer_wert[0]<10000){Anzeige_Blutwaesche =true;Anzeige_redhead =true;buffer_wert[1]=buffer_wert[0]-1000;}
-else{Anzeige_Blutwaesche =false;Anzeige_redhead =false;buffer_wert[1]=buffer_wert[0];}
+if(buffer_wert[0]>=1000&&buffer_wert[0]<10000){Anzeige_Blutwaesche =true;buffer_wert[1]=buffer_wert[0]-1000;}
+else{Anzeige_Blutwaesche =false;buffer_wert[1]=buffer_wert[0];}
 
 if(buffer_wert[1]>=100&&buffer_wert[1]<1000){Anzeige_Cleanray =true;buffer_wert[2]=buffer_wert[1]-100;}
 else{Anzeige_Cleanray =false;buffer_wert[2]=buffer_wert[1];}
@@ -111,8 +115,8 @@ else{Anzeige_Cleanray =false;buffer_wert[2]=buffer_wert[1];}
 if(buffer_wert[2]>=10&&buffer_wert[2]<100){Anzeige_Lifecleaner =true;buffer_wert[3]=buffer_wert[2]-10;}
 else{Anzeige_Lifecleaner =false;buffer_wert[3]=buffer_wert[2];}
 
-if(buffer_wert[3]>=1&&buffer_wert[3]<10){Anzeige_Dekon =true;Anzeige_redhead =true;}
-else{Anzeige_Dekon =false;Anzeige_redhead =false;}
+if(buffer_wert[3]>=1&&buffer_wert[3]<10){Anzeige_Dekon =true;}
+else{Anzeige_Dekon =false;}
 
 /*
 
