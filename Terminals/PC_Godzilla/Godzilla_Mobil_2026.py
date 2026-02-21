@@ -90,7 +90,7 @@ if mode ==2:
 port=ports[0]
 
 # Serielle Verbindung (stellen Sie sicher, dass COM-Port und Baudrate korrekt sind)
- ser = serial.Serial('COM3', 57600, timeout=1)
+ser = serial.Serial('COM3', 57600, timeout=1)
 #ser = serial.Serial(port, 57600, timeout=1)
 
 # Funktion zum Senden von Daten über die serielle Verbindung
