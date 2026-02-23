@@ -31,7 +31,7 @@ def run_code():
         module = importlib.import_module(ORIGINAL_SCRIPT_NAME)
         
         # Übergabe an das Skript (Beispiel: als globale Variable im Zielmodul)
-        # module.PORT = real_port 
+        module.port = real_port 
         # module.main(real_port)
 
 # GUI Setup
