@@ -29,7 +29,7 @@ root.geometry("350x150")
 tk.Label(root, text="Wähle den COM-Port für das Skript:", font=("Arial", 10)).pack(pady=10)
 
 # Ports automatisch erkennen
-ports = [p.device for p in serial.tools.list_ports.comports()]
+ports = [p.device for p in serial.tools.list_ports.comports(include_links=True)]
 port_cb = ttk.Combobox(root, values=ports, state="readonly")
 port_cb.pack(pady=5)
 if ports: port_cb.current(0)
