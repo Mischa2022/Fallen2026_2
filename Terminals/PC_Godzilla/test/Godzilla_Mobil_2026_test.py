@@ -10,8 +10,8 @@ import serial.tools.list_ports
 mode=2
 
 ports = []
-#for port in serial.tools.list_ports.comports():
- #   ports.append(port.name)
+for port in serial.tools.list_ports.comports():
+        ports.append(port.name)
 
 
 # Definieren der Listen global

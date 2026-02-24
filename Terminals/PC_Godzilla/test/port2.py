@@ -3,7 +3,7 @@ from tkinter import ttk
 import serial.tools.list_ports
 import importlib
 
-ORIGINAL_SCRIPT_NAME = "Godzilla_Mobil_2026_test" 
+ORIGINAL_SCRIPT_NAME = "Godzilla_PC_2026_test" 
 
 def get_detailed_ports():
     """Erstellt eine Liste mit Klarnamen und ein Mapping auf den Gerätenamen."""
@@ -31,7 +31,7 @@ def run_code():
         module = importlib.import_module(ORIGINAL_SCRIPT_NAME)
         
         # Übergabe an das Skript (Beispiel: als globale Variable im Zielmodul)
-        module.port = real_port 
+        module.ports = real_port 
         # module.main(real_port)
 
 # GUI Setup
