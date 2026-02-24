@@ -9,9 +9,14 @@ import serial.tools.list_ports
 
 mode=2
 
-ports = []
-for port in serial.tools.list_ports.comports():
-    ports.append(port.name)
+#feste portvergabe
+ports= ['COM1','COM2','COM3','COM4','COM5','COM6','COM7']
+channel=2
+
+
+#suche ports
+#for port in serial.tools.list_ports.comports():
+ #   ports.append(port.name)
 
 
 # Definieren der Listen global
@@ -87,11 +92,14 @@ if mode ==2:
         nachrichtE = ["r", "j", "o"]
         farbenE = ["lightgray","lightgray","lightgray","lightgray","lightgray","lightgray","lightgray","green","yellow","red","lightgray"]      
 
-port=ports[0]
+#suche ports
+        
+#port=ports[0]
 
 # Serielle Verbindung (stellen Sie sicher, dass COM-Port und Baudrate korrekt sind)
-# ser = serial.Serial('COM4', 57600, timeout=1)
-ser = serial.Serial(port, 57600, timeout=1)
+ser = serial.Serial(ports[channel], 57600, timeout=1)
+#ser = serial.Serial('COM3', 57600, timeout=1)
+#ser = serial.Serial(port, 57600, timeout=1)
 
 # Funktion zum Senden von Daten über die serielle Verbindung
 def send_command(command):
