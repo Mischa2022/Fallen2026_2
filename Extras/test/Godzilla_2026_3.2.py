@@ -15,17 +15,51 @@ import logging
 
 APP_TITLE = "GODZILLA 3.2 Professional"
 BAUDRATE = 57600
-FULLSCREEN = False
+#FULLSCREEN = False
+FULLSCREEN = True
 COLUMNS = 4
 
 # ================== BUTTON COLOR CONFIG ===================
 BUTTON_COLORS = {
-    "default": {"bg": "#2E2E2E", "fg": "white", "hover_bg": "#505050"},
+ 
+
+    "Mensch start":{"bg": "#ffffff", "fg": "black", "hover_bg": "#999999"},
+    "Mensch grün start":{"bg": "#00ff00", "fg": "black", "hover_bg": "#008000"},
+    "Mensch gelb start":{"bg": "#ffff00", "fg": "black", "hover_bg": "#FFA500"},
+    "Mensch rot start":{"bg": "#ff0000", "fg": "black", "hover_bg": "#8B0000"},
+    "Mensch jetzt":{"bg": "#999999", "fg": "black", "hover_bg": "#474747"},
+    "Mensch grün jetzt":{"bg": "#00ff00", "fg": "black", "hover_bg": "#008000"},
+    "Mensch gelb jetzt":{"bg": "#ffff00", "fg": "black", "hover_bg": "#FFA500"},
+    "Mensch rot jetzt":{"bg": "#ff0000", "fg": "black", "hover_bg": "#8B0000"},
+    
+    "Update buchen":{"bg": "#ffffff", "fg": "black", "hover_bg": "#999999"},
+    "Nanoclean":{"bg": "#ffff00", "fg": "black", "hover_bg": "#FFA500"},
+    "Dekon":{"bg": "#00ff00", "fg": "black", "hover_bg": "#008000"},
+    "Lifecleaner":{"bg": "#009999", "fg": "black", "hover_bg": "#0099ff"},
+    "Blutwäsche":{"bg": "#cc0000", "fg": "black", "hover_bg": "#ff0000"},
+    "Cleanray":{"bg": "#0033ff", "fg": "white", "hover_bg": "#003399"},
+    "Drawback":{"bg": "#000000", "fg": "white", "hover_bg": "#999999"},
+    "Redhead":{"bg": "#5A0000", "fg": "white", "hover_bg": "#7B0000"},   
+    
+    "Analyse":{"bg": "#ffffff", "fg": "black", "hover_bg": "#999999"},
+    "Analyse Ausführlich":{"bg": "#ccffff", "fg": "black", "hover_bg": "#ccccff"},
+    "Analyse Nano":{"bg": "#ffff00", "fg": "black", "hover_bg": "#FFA500"},
+    "Analyse Dekon":{"bg": "#00ff00", "fg": "black", "hover_bg": "#008000"},
+    "Analyse Life":{"bg": "#009999", "fg": "black", "hover_bg": "#0099ff"},
+    "Analyse Blood":{"bg": "#cc0000", "fg": "black", "hover_bg": "#ff0000"},
+    "Analyse Clean":{"bg": "#0033ff", "fg": "white", "hover_bg": "#003399"},
+    "Analyse alles":{"bg": "#000000", "fg": "white", "hover_bg": "#999999"},
+
+    "1":{"bg": "#00ff00", "fg": "black", "hover_bg": "#008000"},
+    "2":{"bg": "#ffff00", "fg": "black", "hover_bg": "#FFA500"},
+    "3":{"bg": "#ff0000", "fg": "black", "hover_bg": "#8B0000"},
+    "Clear": {"bg": "#8B0000", "fg": "white", "hover_bg": "#A00000"},
+    "default":{"bg": "#999999", "fg": "black", "hover_bg": "#474747"},
     "Reset": {"bg": "#8B0000", "fg": "white", "hover_bg": "#A00000"},
-    "Analyse": {"bg": "#004080", "fg": "white", "hover_bg": "#0059B3"},
+    "Enter": {"bg": "#006400", "fg": "white", "hover_bg": "#008000"},
     "Radio ON": {"bg": "#006400", "fg": "white", "hover_bg": "#008000"},
-    "Radio OFF": {"bg": "#5A0000", "fg": "white", "hover_bg": "#7B0000"},
-    "Nanoclean":{"bg": "#006400", "fg": "white", "hover_bg": "#008000"},
+    "Radio OFF": {"bg": "#5A0000", "fg": "white", "hover_bg": "#7B0000"},   
+    
 }
 
 TAB_CONFIG = {
@@ -73,7 +107,7 @@ TAB_CONFIG = {
     "Manuell": {}
 }
 
-MANUAL_PREFIX = {"Ray": "r","Uhr": "j","Rechte NBCLD": "o"}
+MANUAL_PREFIX = {"Ray": "r","Uhr": "j","Rechte RNBCLD": "o"}
 
 # ==========================================================
 # ===================== LOGGING SETUP ======================
@@ -172,7 +206,7 @@ class GodzillaApp:
 
         # Monitor
         self.output = tk.Text(
-            self.root,height=12,bg="#121212",fg="#00FF00",insertbackground="white"
+            self.root,height=36,bg="#121212",fg="#00FF00",insertbackground="white"
         )
         self.output.pack(fill="x", padx=10, pady=10)
 
@@ -196,9 +230,9 @@ class GodzillaApp:
         self.status_bar.pack(fill="x")
 
         # Dark/Light toggle
-        ttk.Button(self.root,text="Toggle Dark/Light",command=self.toggle_dark_light).pack(pady=5)
+       # ttk.Button(self.root,text="Toggle Dark/Light",command=self.toggle_dark_light).pack(pady=5)
 
-
+        ttk.Button(self.root, text="✖ Schließen", command=self.on_close).pack(anchor="ne", padx=10, pady=10)
         self.update_buttons()
 
     # ================= SERIELLE SENDEN + CLEAR =================
@@ -218,8 +252,8 @@ class GodzillaApp:
             style_name,
             background=color_config["bg"],
             foreground=color_config["fg"],
-            font=("Arial", 12, "bold"),
-            padding=10
+            font=("Arial", 18, "bold"),
+            padding=14
         )
         self.style.map(
             style_name,
@@ -259,7 +293,7 @@ class GodzillaApp:
             ttk.Radiobutton(option_frame,text=option,value=option,variable=self.manual_var).pack(side="left", padx=15)
         self.entry = ttk.Entry(self.button_frame,font=("Arial",18),justify="right")
         self.entry.grid(row=1,column=0,columnspan=3,pady=10,sticky="ew")
-        buttons = ['7','8','9','4','5','6','1','2','3','0','Clear','Enter']
+        buttons = ['7','8','9','4','5','6','1','2','3','Clear','0','Enter']
         row = 2; col = 0
         for b in buttons:
             if b=="Enter": action = self.send_manual
