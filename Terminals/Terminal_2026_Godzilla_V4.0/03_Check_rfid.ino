@@ -364,7 +364,7 @@ prozess();
 
     if(variante==1||variante==10){
   
-  if(rights>0&&rights<11112){
+  if(rights>0&&rights<111112){
     myprint("Rechte:RNBCLD","","",true,true,false,1,port);
     myprint("       ","","",true,false,false,1,port);
 

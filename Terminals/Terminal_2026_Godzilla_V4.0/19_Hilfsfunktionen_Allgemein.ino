@@ -175,7 +175,7 @@ if(wurfergebnis== false){
   lcd.setCursor(0,3);
   lcd.print("TOD         ");
    buchungsgrund="Redhead Tod";
-
+  msg2="Redhead Tod";
   delay(1000);
  
 }
@@ -184,6 +184,7 @@ Serial.println("Leben");
   lcd.setCursor(0,3);
   lcd.print("LEBEN       ");
   buchungsgrund="Redhead Leb";
+  msg2="Redhead Leben";
   delay(1000);
 }
 

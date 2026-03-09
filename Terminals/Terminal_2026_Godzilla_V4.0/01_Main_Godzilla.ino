@@ -499,12 +499,13 @@ if(x==2){
           rfid_reading(knownKeys[0],1);   
           rights=ergebnisB;
       
-        if(rights>0&&rights<11112){
+        if(rights>0&&rights<111112){
             rechte_check(rights);
             wdt_reset();
             mfrc522.PICC_HaltA();
             mfrc522.PCD_StopCrypto1(); 
-                   Serial2.print("p");
+            Serial2.print("p");
+            if(rights<100000){Serial2.print("0");}
             if(rights<10000){Serial2.print("0");}
             if(rights<1000){Serial2.print("0");}
             if(rights<100){Serial2.print("0");}
@@ -515,7 +516,7 @@ if(x==2){
             return;
           }
       
-        if(rights>11111||rights==0){
+        if(rights>111111||rights==0){
           lcd.setCursor(0, 0);
           lcd.print("                    "); 
           lcd.setCursor(0, 1);
@@ -850,6 +851,7 @@ if(ziel_char==' '){
       * 5 Blutwaesche
       * 6 Cleanray
       * 7 Drawback
+      * 8 Redhead
       */
       break;
  /*     
@@ -965,10 +967,12 @@ if(ziel_char==' '){
      msg5="";
      msg6="";
     delay(2000);
+    if (redhead_dead == false){
     lcd.clear();
     ebene=false;// zurueck zum startbild
      menue_print_lcd(modus,0);  
     flow=0;
+    }
   }
 }  
 

@@ -169,8 +169,8 @@ Con_End=(con_start_time+rest_time+((anzahl_tage-1)*86400));
               limit_con= 100;
               used_tag = 0;
               used_con = 0;
-              
-             buchungsgrund="Redhead ohn";
+              redhead_dead = true;
+             buchungsgrund="Redhead    ";
               }
 
 //Rechnen und Freigaben

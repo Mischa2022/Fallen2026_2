@@ -259,13 +259,13 @@ int poti_read(int mini,int maxi){
   //Serial.println(potiwert);
   poti_anzeige=map(potiwert,0,1000,0,maxi);
  if(poti_anzeige>maxi){poti_anzeige=maxi;}
-    menue_print_lcd(modus,poti_anzeige);
+    menue_print_lcd(modus,poti_anzeige);redhead_dead = false;
   }
   
   if ( button.fallingEdge() ) {
     buzzer_play(1,100);
     ebene=!ebene;
-    menue_print_lcd(modus,poti_anzeige);
+    menue_print_lcd(modus,poti_anzeige);redhead_dead = false;
    // Serial.print("Ebene:");Serial.println(ebene);
    }
    
@@ -288,11 +288,11 @@ int rotary_read(int mini,int maxi){
     if(counterx>=maxi){counterx=maxi;}
       else{    counterx++; }
      
-      menue_print_lcd(modus,counterx);
+      menue_print_lcd(modus,counterx);redhead_dead = false;
   }
     if (rotary.buttonPressedReleased(20)) {
       ebene=!ebene;
-   menue_print_lcd(modus,counterx);
+   menue_print_lcd(modus,counterx);redhead_dead = false;
   }
 }
 

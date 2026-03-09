@@ -397,7 +397,7 @@ bool Anzeige_Blutwaesche =false;
 bool Anzeige_Cleanray =false;
 bool Anzeige_drawback =false;
 bool Anzeige_redhead =false;
-
+bool redhead_dead = false;
 bool tft=false;
   
 //Button
