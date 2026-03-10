@@ -323,6 +323,7 @@ myprint("Richtiges Con:","","",true,false,false,1,port);
                 Serial.println("Behandlung abgebrochen"); 
                   lcd.setCursor(0,2);
                   lcd.print("keine Behandlung  ");
+                  redhead_dead = false;
                   delay(1000);
                 }
                 

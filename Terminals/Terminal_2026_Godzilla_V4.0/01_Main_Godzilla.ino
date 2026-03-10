@@ -935,8 +935,12 @@ if(ziel_char==' '){
         lcd.print(msg1);
         }
     if(msg2!=""){
-    
+      if (redhead_dead == false){
        myprint(msg2,"","",true,false,false,1,port);
+       }
+       if (redhead_dead == true){
+       myprint(msg2,"","",true,true,false,1,port);
+       } 
        lcd.setCursor(0,1);
        lcd.print(msg2);
         }
