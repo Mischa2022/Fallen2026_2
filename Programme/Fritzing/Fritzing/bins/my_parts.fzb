@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module fritzingVersion="0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806" icon="Mine.png">
+    <title>My Parts</title>
+    <instances>
+        <instance moduleIdRef="Mega2560 R3 Pro Mini_6a6c99e0a85c3764dc2160d0a6dd4467_2" modelIndex="5769" path="C:/Users/Sascha/Documents/Fritzing/parts/user/Mega2560 R3 Pro Mini_6a6c99e0a85c3764dc2160d0a6dd4467_2.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="adafruit_ca17d53e038ec883d67bbb22b597470a_1" modelIndex="85694576" path="C:/Users/Sascha/AppData/Roaming/Fritzing/partfactory/60f6c09f13cd9b50dd16274380463671/contrib/adafruit_ca17d53e038ec883d67bbb22b597470a_1.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="TXB0108_3be107ba1d4971bd982d12cdddf32e11_1" modelIndex="85694577" path="C:/Users/Sascha/AppData/Roaming/Fritzing/partfactory/60f6c09f13cd9b50dd16274380463671/contrib/TXB0108_3be107ba1d4971bd982d12cdddf32e11_1.fzp">
+            <views/>
+        </instance>
+    </instances>
+</module>
