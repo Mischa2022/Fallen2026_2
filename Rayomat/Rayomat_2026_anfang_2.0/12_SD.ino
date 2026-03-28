@@ -206,7 +206,7 @@ myprint("-----------------------------------------------------------------------
         
 
       Serial.println();  
-      Serial.println("Nun Dongel auflegen");
+      Serial.println(F("Initialisierung fertig"));
       Serial.println();
 
 }

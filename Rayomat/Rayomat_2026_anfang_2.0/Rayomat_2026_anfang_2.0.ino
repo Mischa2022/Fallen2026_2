@@ -292,8 +292,8 @@ int test =0;
 
 //Interrupt
 //*************************************************************************************//
-bool interruptPin_state=0;
-const byte interruptPin = A5; //2, 3, 18, 19
+bool Pin_state=0;
+const byte Pin = 18; //2, 3, 18, 19
 
 
 //*************************************************************************************//
@@ -336,9 +336,8 @@ myservo_anzeige.attach(12);
 myservo_wippe.attach(10);
 
 
-  pinMode(interruptPin, INPUT);
-  //attachInterrupt(interruptPin, blinken, HIGH);
-  //attachInterrupt(interruptPin, main_rayomat, HIGH);
+  pinMode(Pin, INPUT_PULLUP);
+
 
 
 initialisierung2();
@@ -348,10 +347,10 @@ initialisierung2();
 
 void loop() {
 
-  interruptPin_state=digitalRead(interruptPin);
+ Pin_state=digitalRead(Pin);
   
 
- if(interruptPin_state==HIGH){
+ if(Pin_state==HIGH){
   mfrc522.PCD_AntennaOn();
   delay(100);
   previousMillis=millis();

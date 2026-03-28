@@ -1,6 +1,6 @@
 // Konfiguration: Spieler-TAG = MFRC522 / Medi-TAG = PN532
   void main_rayomat(){
-     
+     Serial.println(F("Ray_o_Matic 2000 startet buchung"));
  long currentMillis;
 t = rtc.now();      
 aktuell_time=t.unixtime();
@@ -209,11 +209,11 @@ myservo_anzeige.write(175);
     
     Mediread_PN532();
        
-            
+        /*    
             Serial.print("current3:");Serial.print(currentMillis);
             Serial.print(" | previous3:");Serial.println(previousMillis);
             Serial.print(" Vergangene Sekunden:");Serial.println(currentMillis-previousMillis);
-      
+      */
 
         if (currentMillis - previousMillis >= intervall) {
      //      pixels2.clear();
@@ -356,7 +356,7 @@ myservo_anzeige.write(175);
     
 
     flow=0;
-    interruptPin_state=LOW;
+    Pin_state=LOW;
   }
 
 }
