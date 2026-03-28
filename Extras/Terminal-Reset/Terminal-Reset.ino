@@ -6,6 +6,7 @@
 File konfigFile;  //Konfigimportdatei
 File modus;
 File root;
+ String basis_konfig ="*FALLENtest*1774589888*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 RTC_DS3231 rtc;
 DateTime t;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -41,7 +42,8 @@ void setup() {
 
    konfigFile = SD.open("Konfig.txt", FILE_WRITE);
    if (konfigFile) {
-   konfigFile.print("*FALLEN2025*1745971200*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*");
+  
+   konfigFile.print(basis_konfig);
  //  konfigFile.print("*FALLEN2024*1707298223*0*60*4*48*30*30*3*1*24*5*1*20*20*3*3*70*70*2*2*10*10*6*6*");
    konfigFile.println("");
    konfigFile.close();
