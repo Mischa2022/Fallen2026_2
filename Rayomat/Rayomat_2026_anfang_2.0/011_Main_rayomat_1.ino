@@ -6,8 +6,8 @@ t = rtc.now();
 aktuell_time=t.unixtime();
 
 
-myservo_wippe.write(rueckgabe);
-myservo_anzeige.write(175);
+//myservo_wippe.write(rueckgabe);
+//myservo_anzeige.write(175);
 //Helfer falls während der Nutzung die verbindung zur Uhr abbricht.
  if( aktuell_time<1640991601||aktuell_time > 1893452460){
   Serial.println(F("Uhr ist verstellt"));
@@ -196,14 +196,14 @@ myservo_anzeige.write(175);
   //je nach Reader muss der richtige aktiviert werden
  
   while( sorte==0){
-  /*  pixels1.clear();
+    pixels1.clear();
     pixels1.show();  
     
   for(int i=0; i<NUMPIXELS; i++) {
     pixels2.setPixelColor(i, pixels2.Color(50, 50,0));
     pixels2.show();   
    
-      }*/ 
+      } 
     
     currentMillis = millis();
     

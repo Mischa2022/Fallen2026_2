@@ -156,7 +156,7 @@ mfrc522.PCD_DumpVersionToSerial();
 t = rtc.now();      
 aktuell_time=t.unixtime();
 rest_time=86400- ((con_start_time+(UTC*UNIX_korrektur))%86400); 
-  
+  Serial.println(aktuell_time);
 //Uhrcheck
   if( aktuell_time<(con_start_time-432000)||aktuell_time > 1893452460){
   Serial.print(F("Con_start_time:"));Serial.println(con_start_time);
@@ -212,11 +212,11 @@ myprint("-----------------------------------------------------------------------
 }
 
 void lichtertest(){
-
+/*
 digitalWrite(ledPin1,HIGH);
 delay(500);
 digitalWrite(ledPin2,HIGH);
-delay(500);
+delay(500);*/
 digitalWrite(relaisPin[0],!geschaltet);
 delay(1000);
 digitalWrite(relaisPin[1],!geschaltet);

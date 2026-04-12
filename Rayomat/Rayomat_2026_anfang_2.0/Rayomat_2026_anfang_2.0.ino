@@ -30,7 +30,7 @@ const int ledPin1 = 5; //neue Platine  // A2 Dongel anwesend? "An" ansonsten "Au
 const int ledPin2 = 33; //neue Platine  // nur für meine Spielhardware
 
 //Relais
-int relaisPin[] ={A11,A5,A7,A9}; //reihenfolge muss getestet werden
+int relaisPin[] ={36,38,40,42}; //reihenfolge muss getestet werden
 //int relaisPin[] ={A11,A9,A7,A5};//reihenfolge muss getestet werden
 bool geschaltet =1; //1=invertiert on / off der Relais
 long wartezeit =5000; // Wartezeit nach schalten der Relais, bis es weiter geht.
@@ -53,7 +53,7 @@ int servo_value; //puffer für wippe
 //*************************************************************************************//
 //String basis_konfig ="*FALLEN2035*1711886264*0*60*5*48*30*30*6*6*24*5*1*20*20*6*6*70*70*2*2*10*10*6*6*";
 //String basis_konfig ="*FALLEN2025*1745971200*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
-String basis_konfig ="*FALLENtest*1774589888*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
+String basis_konfig ="*FALLENtest*1775734965*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 String basis2[26];
 char* conname="Fallentest         ";
 String neu_konfig;//für konfig import
@@ -252,8 +252,8 @@ int con_tag; //puffer um zu bestimmen, welcher tag aktuell läuft
 
 //Pixel
 //*************************************************************************************//
-#define PIN1        A0 
-#define PIN2        A15
+#define PIN1        A2 
+#define PIN2        A14
 
 #define NUMPIXELS 24 
 int neo_select;
@@ -332,8 +332,8 @@ digitalWrite(relaisPin[1],geschaltet);
 digitalWrite(relaisPin[2],geschaltet);
 digitalWrite(relaisPin[3],geschaltet);
 
-myservo_anzeige.attach(12);
-myservo_wippe.attach(10);
+myservo_anzeige.attach(11);
+myservo_wippe.attach(13);
 
 
   pinMode(Pin, INPUT_PULLUP);
@@ -359,6 +359,10 @@ void loop() {
   else{
     mfrc522.PCD_AntennaOff();
     blinken();
+ 
+    
+          neo_select=random(0,2);
+        blinki(99,99,neo_select);
     }
   
 }
