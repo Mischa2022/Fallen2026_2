@@ -6,7 +6,7 @@
 File konfigFile;  //Konfigimportdatei
 File modus;
 File root;
- String basis_konfig ="*FALLENtest*1775734965*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
+String basis_konfig ="*FALLENtest*1776419776*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 RTC_DS3231 rtc;
 DateTime t;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};

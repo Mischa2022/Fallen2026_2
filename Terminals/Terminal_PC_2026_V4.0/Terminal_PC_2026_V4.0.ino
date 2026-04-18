@@ -14,7 +14,7 @@
 //*FALLEN2025*1738657504*0*60*5*48*30*30*6*6*24*5*1*20*20*6*6*70*70*2*2*10*10*6*6*//test
 //*FALLEN2024*1707298223*0*60*4*48*30*30*3*1*24*5*1*20*20*3*3*70*70*2*2*10*10*6*6*//test
 //*FALLEN2025*1745971200*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*//con
-String basis_konfig ="*FALLENtest*1774589888*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
+String basis_konfig ="*FALLENtest*1776419776*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 String basis2[26];
 String Con_Name=""; //Beispiel Conname, wird normalerweise aus der Konfig gefuellt
 String neu_konfig;//fuer konfig import

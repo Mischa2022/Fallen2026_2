@@ -31,7 +31,6 @@ const int ledPin2 = 33; //neue Platine  // nur für meine Spielhardware
 
 //Relais
 int relaisPin[] ={36,38,40,42}; //reihenfolge muss getestet werden
-//int relaisPin[] ={A11,A9,A7,A5};//reihenfolge muss getestet werden
 bool geschaltet =1; //1=invertiert on / off der Relais
 long wartezeit =5000; // Wartezeit nach schalten der Relais, bis es weiter geht.
 
@@ -366,14 +365,14 @@ void loop() {
  }
   else{
     mfrc522.PCD_AntennaOff();
- //   blinken();
+
  
     
-          //neo_select=random(0,2);
+        
           neo_select=0;
         blinki(99,99,neo_select);
         delay(1500);
-       /*Serial.println("Bin da");*/Serial2.println("y");
+      Serial2.println("y");
     }
   
 }

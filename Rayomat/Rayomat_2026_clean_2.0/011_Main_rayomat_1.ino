@@ -27,7 +27,7 @@ aktuell_time=t.unixtime();
                         buchunglog.close();
                         }
                        else {
-                     // myprint("blog.txt nicht vorhanden","","",true,true,false,1,0);
+                    
                       Serial.println(F("blog.txt nicht vorhanden"));
                       }
                       
@@ -37,7 +37,7 @@ aktuell_time=t.unixtime();
     
 //Buchungslogs löschen
       case '}':    buzzer_play( 1,100);
-                  // myprint("Buchungslogs gelöscht","","",true,true,false,1,port);
+              
                    Serial.println(F("Buchungslogs gelöscht"));
                    SD.remove("blog.txt");
                    ziel_long=0;
@@ -163,9 +163,7 @@ aktuell_time=t.unixtime();
   if ( ! mfrc522.PICC_IsNewCardPresent()){
          
         currentMillis = millis();
-        
-        //digitalWrite(ledPin1,LOW);
-        
+               
     ziel_long=0;
     ziel_char=' ';  
 
@@ -174,7 +172,6 @@ aktuell_time=t.unixtime();
   } 
 
   else{
-    //digitalWrite(ledPin1,HIGH); //Optisches Signal für Erkennung ob Dongel anwesend
     myservo_wippe.attach(13);
    myservo_wippe.write(geschlossen);
    delay(100);
@@ -186,7 +183,8 @@ aktuell_time=t.unixtime();
     return;
   
   }
-/*Serial.println("Bin da");*/Serial2.println("y");
+Serial2.println("y");
+
   //Hauptfunktion um Medis zu erkennen, die eingeworfen wurden. Gibt ziel_char und ziel_long weiter als ob man es per seriell eingegeben hat
   //je nach Reader muss der richtige aktiviert werden
  
@@ -204,18 +202,12 @@ aktuell_time=t.unixtime();
     
     Mediread_PN532();
        
-        /*    
-            Serial.print("current3:");Serial.print(currentMillis);
-            Serial.print(" | previous3:");Serial.println(previousMillis);
-            Serial.print(" Vergangene Sekunden:");Serial.println(currentMillis-previousMillis);
-      */
+
 
         if (currentMillis - previousMillis >= intervall) {
-     //      pixels2.clear();
-       //    pixels2.show();  
+
               ziel_char='b';
               ziel_long=1;  
-              Serial.println("Timeout");
               sorte=1;
               
           }  
@@ -223,8 +215,6 @@ aktuell_time=t.unixtime();
         
         if(sorte!=0){
          ziel_long=sorte; 
-     //    pixels2.clear();
-     //    pixels2.show();  
          break;
           }
          
@@ -232,7 +222,7 @@ aktuell_time=t.unixtime();
 
   //Serielle Abfrage was aufgerufen werden soll
   serial_read(ziel_char,ziel_long,'\n');
-  /*Serial.println("Bin da");*/Serial2.println("y");      
+Serial2.println("y");      
   switch (ziel_char){   
 
 //Ausführliche Analyse
@@ -284,7 +274,7 @@ aktuell_time=t.unixtime();
           }
       medibuchung_MFRC522(ziel_long);
       booking_save();
-    //  reset_variablen();
+
   
       Tag_analyse(10,0);
       myprint("------------------------------------------------","","",true,true,false,1,port);
@@ -355,5 +345,5 @@ aktuell_time=t.unixtime();
     pixels2.clear();
     pixels2.show(); 
   }
-/*Serial.println("Bin da");*/Serial2.println("y");
+Serial2.println("y");
 }
