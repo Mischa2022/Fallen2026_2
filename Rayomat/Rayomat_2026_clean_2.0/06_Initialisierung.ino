@@ -152,7 +152,9 @@ myservo_anzeige.write(x);
 delay(50);
 }
 
-
+      Serial.println();  
+      Serial.println(F("Lichttest fertig"));
+      Serial.println();
 
   }
 

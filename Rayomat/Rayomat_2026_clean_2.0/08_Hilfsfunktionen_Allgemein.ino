@@ -93,84 +93,117 @@ int relais_switch(unsigned long state,long pause){
             if(state>400)            {      relais=9;       } //rot3
 
 
-servo_value2 = map(state, 0, 450, 180, 0);
+
       
 switch(relais){
   case 0: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-           
+
           servo_value2=175;
+       //  servo_value2=5;
+
   break;
   
   case 1: digitalWrite(relaisPin[1],!geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-          
+
           servo_value2=160;
+        //  servo_value2=20;
+
   break;
   
   case 2: digitalWrite(relaisPin[1], !geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-           
+
           servo_value2=140;
+         // servo_value2=40;
+
   break;
   
   case 3: digitalWrite(relaisPin[1], !geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-          
+
           servo_value2=120;
+         // servo_value2=60;
+
   break;
   
   case 4: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], !geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-          
+ 
           servo_value2=100;
+        //  servo_value2=80;
+
   break;
   
   case 5: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], !geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-          
+
           servo_value2=80;
+        //  servo_value2=100;
+
   break;
   
   case 6: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], !geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
-          
+
           servo_value2=60;
+       //   servo_value2=120;
+
   break;
   
   case 7: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], !geschaltet);
-          
+
           servo_value2=40;
+      //    servo_value2=140;
+
   break;
   
   case 8: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], !geschaltet);
-          
+
           servo_value2=20;
+       //   servo_value2=160;
+
   break;
   
   case 9: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], !geschaltet);
-          
+ 
           servo_value2=5;
+       //   servo_value2=175;
+
   break;
 }
 
 myservo_anzeige.attach(11);
-  myservo_anzeige.write(servo_value2);
-  delay(100);
-  myservo_anzeige.detach();
+
+for (int x=0;x<=servo_value2;x++){
+myservo_anzeige.write(x);
+Serial.print("Ray:");Serial.print(state);Serial.print(" |");Serial.println(x);
+delay(5);
+}
+
+delay(100);
+myservo_anzeige.detach();
+
+myservo_wippe.attach(13);
+myservo_wippe.write(servo_value);
+delay(100);
+myservo_wippe.detach();
+
+        
           delay(pause);
           digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);

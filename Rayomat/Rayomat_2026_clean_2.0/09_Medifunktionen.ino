@@ -485,10 +485,7 @@ myprint("Richtiges Con:","","",true,false,false,1,port);
         
          buzzer_play( 3,100);
    }
-      myservo_wippe.attach(13);
-      myservo_wippe.write(servo_value);
-       delay(100);
-      myservo_wippe.detach();
+
        myprint("------------------------------------------------","","",true,true,false,1,port);   
 
 memset( block_writing, 0, sizeof( block_writing));
