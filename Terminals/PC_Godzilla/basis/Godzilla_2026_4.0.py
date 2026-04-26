@@ -15,7 +15,7 @@ from PIL import Image, ImageTk
 
 APP_TITLE = "GODZILLA 4.0 Professional"
 BAUDRATE = 57600
-FULLSCREEN = True
+FULLSCREEN = False
 COLUMNS = 4
 
 BUTTON_COLORS = {
@@ -140,7 +140,7 @@ class GodzillaApp:
         self.serial = serial_manager
         self.root = tk.Tk()
         self.root.title(APP_TITLE)
-        self.root.geometry("1000x700")
+        self.root.geometry("800x400")
 
         if FULLSCREEN:
             self.root.attributes("-fullscreen", True)
