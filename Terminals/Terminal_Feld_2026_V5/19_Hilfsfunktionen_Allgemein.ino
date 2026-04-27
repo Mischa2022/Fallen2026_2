@@ -99,35 +99,41 @@ Anzeige_update =true;//automatisch immer frei, sobald Rechte vorhanden
 Anzeige_drawback =true;//automatisch immer frei, sobald Rechte vorhanden
 
 //Serial.println("RNBCLD");
-
-if(rechte_basis>=100000){Anzeige_redhead =true;nzeige_Blutwaesche =true;buffer_wert[0]=rechte_basis-100000;}
+//Serial.print("Startwert:");Serial.println(rechte_basis);
+if(rechte_basis>=100000){Anzeige_redhead =true;buffer_wert[0]=rechte_basis-100000;}
 else{Anzeige_redhead =false;buffer_wert[0]=rechte_basis;}
+//Serial.print("Redhead:");Serial.println(Anzeige_redhead);
 
-if(rechte_basis>=10000){Anzeige_Nanoclean =true;buffer_wert[0]=rechte_basis-10000;}
-else{Anzeige_Nanoclean =false;buffer_wert[0]=rechte_basis;}
+//Serial.print("buffer_wert[0]:");Serial.println(buffer_wert[0]);
+if(buffer_wert[0]>=10000&&buffer_wert[1]<100000){Anzeige_Nanoclean =true;buffer_wert[1]=buffer_wert[0]-10000;}
+else{Anzeige_Nanoclean =false;buffer_wert[1]=buffer_wert[0];}
+//Serial.print("Nano:");Serial.println(Anzeige_Nanoclean);
 
-if(buffer_wert[0]>=1000&&buffer_wert[0]<10000){Anzeige_Blutwaesche =true;buffer_wert[1]=buffer_wert[0]-1000;}
-else{Anzeige_Blutwaesche =false;buffer_wert[1]=buffer_wert[0];}
 
-if(buffer_wert[1]>=100&&buffer_wert[1]<1000){Anzeige_Cleanray =true;buffer_wert[2]=buffer_wert[1]-100;}
-else{Anzeige_Cleanray =false;buffer_wert[2]=buffer_wert[1];}
+//Serial.print("buffer_wert[1]:");Serial.println(buffer_wert[1]);
+if(buffer_wert[1]>=1000&&buffer_wert[1]<10000){Anzeige_Blutwaesche =true;buffer_wert[2]=buffer_wert[1]-1000;}
+else{Anzeige_Blutwaesche =false;buffer_wert[2]=buffer_wert[1];}
+//Serial.print("Blood:");Serial.println(Anzeige_Blutwaesche);
 
-if(buffer_wert[2]>=10&&buffer_wert[2]<100){Anzeige_Lifecleaner =true;buffer_wert[3]=buffer_wert[2]-10;}
-else{Anzeige_Lifecleaner =false;buffer_wert[3]=buffer_wert[2];}
+//Serial.print("buffer_wert[2]:");Serial.println(buffer_wert[2]);
+if(buffer_wert[2]>=100&&buffer_wert[2]<1000){Anzeige_Cleanray =true;buffer_wert[3]=buffer_wert[2]-100;}
+else{Anzeige_Cleanray =false;buffer_wert[3]=buffer_wert[1];}
+//Serial.print("Clean:");Serial.println(Anzeige_Cleanray);
 
-if(buffer_wert[3]>=1&&buffer_wert[3]<10){Anzeige_Dekon =true;}
+//Serial.print("buffer_wert[3]:");Serial.println(buffer_wert[3]);
+if(buffer_wert[3]>=10&&buffer_wert[3]<100){Anzeige_Lifecleaner =true;buffer_wert[4]=buffer_wert[3]-10;}
+else{Anzeige_Lifecleaner =false;buffer_wert[4]=buffer_wert[2];}
+//Serial.print("Life:");Serial.println(Anzeige_Lifecleaner);
+
+//Serial.print("buffer_wert[4]:");Serial.println(buffer_wert[4]);
+if(buffer_wert[4]>=1){Anzeige_Dekon =true;}
 else{Anzeige_Dekon =false;}
+//Serial.print("Deko:");Serial.println(Anzeige_Dekon);
 
-/*
+//Serial.print("Update:");Serial.println(Anzeige_update);
+//Serial.print("Draw:");Serial.println(Anzeige_drawback);
 
-Serial.print("Nano:");Serial.println(Anzeige_Nanoclean);
-Serial.print("Blood:");Serial.println(Anzeige_Blutwaesche);
-Serial.print("Clean:");Serial.println(Anzeige_Cleanray);
-Serial.print("Life:");Serial.println(Anzeige_Lifecleaner);
-Serial.print("Deko:");Serial.println(Anzeige_Dekon);
-Serial.print("Update:");Serial.println(Anzeige_update);
-Serial.print("Draw:");Serial.println(Anzeige_drawback);
-*/
+
 entsperrzeit=millis();
 //Serial.print("Entsperrzeit:");Serial.println(entsperrzeit);
 //Serial.print("Locked:");Serial.println(locked);

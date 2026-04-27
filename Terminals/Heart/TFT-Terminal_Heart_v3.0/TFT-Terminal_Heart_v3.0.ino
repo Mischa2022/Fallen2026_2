@@ -70,6 +70,7 @@ bool Life2 =false;
 bool Dekon2 =false;
 bool Update2=false;
 bool Draw2=false;
+bool red= false;
 
 //menue bools letzte ebene
 bool modus= false;

@@ -70,12 +70,12 @@ myString.toCharArray(char_read,200); // wandle string in char array
      
       if(char_read[0]=='p'){ //rechtefreigabe manuell
         on=!on;
-
-      if(char_read[1]=='1'){ Nano2 =true;}else{Nano2 =false;}
-      if(char_read[2]=='1'){ Blood2 =true;}else{Blood2 =false;}
-      if(char_read[3]=='1'){ Clean2 =true;}else{Clean2 =false;}
-      if(char_read[4]=='1'){ Life2 =true;}else{Life2 =false;}
-      if(char_read[5]=='1'){ Dekon2 =true;}else{Dekon2 =false;}
+      if(char_read[1]=='1'){ red =true;}else{red =false;}
+      if(char_read[2]=='1'){ Nano2 =true;}else{Nano2 =false;}
+      if(char_read[3]=='1'){ Blood2 =true;}else{Blood2 =false;}
+      if(char_read[4]=='1'){ Clean2 =true;}else{Clean2 =false;}
+      if(char_read[5]=='1'){ Life2 =true;}else{Life2 =false;}
+      if(char_read[6]=='1'){ Dekon2 =true;}else{Dekon2 =false;}
 
       if(Nano2==true||Blood2==true||Clean2==true||Life2==true||Dekon2==true){
         Update2=true;Draw2=true;
