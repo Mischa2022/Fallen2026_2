@@ -13,15 +13,15 @@
 
 //Geraetspezifisch
 //*************************************************************************************//
-char*Terminalname = "Terminal11";
+char*Terminalname = "Terminal13";
 //char*Terminalname = "  Heart  ";
 int debug=1;
 int erster_buchungstag=1; //0 gleich anreise //1 gleich ab ersten spieltag
 
 //Con_Spezifikationen // werden ueber Konfig gefuellt
 //*************************************************************************************//
-String basis_konfig ="*FALLEN2025*1745971200*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
-
+//String basis_konfig ="*FALLEN2025*1745971200*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
+String basis_konfig ="*FALLEN2026*1777449600*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 String basis2[26];
 String Con_Name=""; //Beispiel Conname, wird normalerweise aus der Konfig gefuellt
 String neu_konfig;//fuer konfig import
