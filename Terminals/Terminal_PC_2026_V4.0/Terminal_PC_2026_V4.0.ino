@@ -38,7 +38,8 @@ bool warten = false;//fuer konfig import
 //Geraetspezifisch
 //*************************************************************************************//
 //char*Terminalname = "  PC003  ";
-char*Terminalname = "  Besen  ";
+//char*Terminalname = "  Besen  ";
+char*Terminalname = "  minilla";
 
 int debug=1;
 int erster_buchungstag=1; //0 gleich anreise //1 gleich ab ersten spieltag
