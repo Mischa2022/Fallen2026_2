@@ -50,11 +50,9 @@ int servo_value; //puffer für wippe
 
 //Con_Spezifikationen // werden über Konfig gefüllt
 //*************************************************************************************//
-//String basis_konfig ="*FALLEN2035*1711886264*0*60*5*48*30*30*6*6*24*5*1*20*20*6*6*70*70*2*2*10*10*6*6*";
-//String basis_konfig ="*FALLEN2025*1745971200*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
-String basis_konfig ="*FALLENtest*1776419776*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
+String basis_konfig ="*FALLEN2026*1777449600*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 String basis2[26];
-char* conname="Fallentest         ";
+char* conname="Fallen2026         ";
 String neu_konfig;//für konfig import
 String neu[26];//für konfig import
 bool warten = false;//für konfig import
@@ -251,8 +249,8 @@ int con_tag; //puffer um zu bestimmen, welcher tag aktuell läuft
 
 //Pixel
 //*************************************************************************************//
-#define PIN1        A2 
-#define PIN2        A14
+#define PIN1        A2 //
+#define PIN2        A14 //
 
 #define NUMPIXELS 24 
 int neo_select;
@@ -364,15 +362,11 @@ void loop() {
   main_rayomat();
  }
   else{
-    mfrc522.PCD_AntennaOff();
-
- 
-    
-        
+    mfrc522.PCD_AntennaOff();        
           neo_select=0;
-        blinki(99,99,neo_select);
-        delay(1500);
-      Serial2.println("y");
+          blinki(99,99,neo_select);
+          delay(1500);
+          Serial2.println("y");
     }
   
 }

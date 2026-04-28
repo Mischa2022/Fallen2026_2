@@ -1,6 +1,6 @@
 // Konfiguration: Spieler-TAG = MFRC522 / Medi-TAG = PN532
   void main_rayomat(){
-     Serial.println(F("Ray_o_Matic 2000 startet buchung"));
+    // Serial.println(F("Ray_o_Matic 2000 startet buchung"));
  long currentMillis;
 t = rtc.now();      
 aktuell_time=t.unixtime();

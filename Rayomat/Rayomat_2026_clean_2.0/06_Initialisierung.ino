@@ -147,7 +147,7 @@ myservo_wippe.write(x);
 delay(50);
 }
 
-for (int x=0;x<180;x++){
+for (int x=160;x>15;x--){
 myservo_anzeige.write(x);
 delay(50);
 }

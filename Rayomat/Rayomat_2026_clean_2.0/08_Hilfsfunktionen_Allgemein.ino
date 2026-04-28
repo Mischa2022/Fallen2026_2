@@ -102,7 +102,7 @@ switch(relais){
 
           servo_value2=175;
        //  servo_value2=5;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 1: digitalWrite(relaisPin[1],!geschaltet);
@@ -111,25 +111,25 @@ switch(relais){
 
           servo_value2=160;
         //  servo_value2=20;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 2: digitalWrite(relaisPin[1], !geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
 
-          servo_value2=140;
+          servo_value2=150;
          // servo_value2=40;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 3: digitalWrite(relaisPin[1], !geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
 
-          servo_value2=120;
+          servo_value2=140;
          // servo_value2=60;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2); 
   break;
   
   case 4: digitalWrite(relaisPin[1], geschaltet);
@@ -138,16 +138,16 @@ switch(relais){
  
           servo_value2=100;
         //  servo_value2=80;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 5: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], !geschaltet);
           digitalWrite(relaisPin[3], geschaltet);
 
-          servo_value2=80;
+          servo_value2=90;
         //  servo_value2=100;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 6: digitalWrite(relaisPin[1], geschaltet);
@@ -156,7 +156,7 @@ switch(relais){
 
           servo_value2=60;
        //   servo_value2=120;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 7: digitalWrite(relaisPin[1], geschaltet);
@@ -165,25 +165,25 @@ switch(relais){
 
           servo_value2=40;
       //    servo_value2=140;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 8: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], !geschaltet);
 
-          servo_value2=20;
+          servo_value2=30;
        //   servo_value2=160;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
   
   case 9: digitalWrite(relaisPin[1], geschaltet);
           digitalWrite(relaisPin[2], geschaltet);
           digitalWrite(relaisPin[3], !geschaltet);
  
-          servo_value2=5;
+          servo_value2=10;
        //   servo_value2=175;
-
+//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
   break;
 }
 
@@ -191,7 +191,7 @@ myservo_anzeige.attach(11);
 
 for (int x=0;x<=servo_value2;x++){
 myservo_anzeige.write(x);
-Serial.print("Ray:");Serial.print(state);Serial.print(" |");Serial.println(x);
+//Serial.print("Ray:");Serial.print(state);Serial.print(" |");Serial.println(x);
 delay(5);
 }
 
