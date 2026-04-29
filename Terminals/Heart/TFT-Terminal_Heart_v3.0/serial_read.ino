@@ -3,7 +3,7 @@ void incoming_reading(){
     String myString="";
     char char_read[200];
     int posx= 120;
-    
+ 
     
   myGLCD.setFont(SmallFont);
 

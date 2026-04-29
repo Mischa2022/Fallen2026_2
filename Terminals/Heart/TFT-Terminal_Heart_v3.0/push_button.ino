@@ -4,6 +4,8 @@ void pushButtons(int a,int b, int option){
     char*msg1="";
     char*msg12="";
     unsigned long msg13=0;
+    posy=58;
+    pos_counter=0;
 
 if(option==0){  //Godzilla
 

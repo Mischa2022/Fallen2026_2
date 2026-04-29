@@ -21,7 +21,7 @@ char read_Char;
       
     }
   }
-/*
+
   while (Serial2.available()){
    
      read_Char = (char)Serial2.read();
@@ -31,7 +31,7 @@ char read_Char;
       port=2;
       
     }
-  }*/
+  }
 
   while (Serial3.available()){
    
