@@ -13,8 +13,8 @@
 
 //Geraetspezifisch
 //*************************************************************************************//
-//char*Terminalname = "Terminal03";
-char*Terminalname = "  Heart  ";
+char*Terminalname = "Terminal12";
+//char*Terminalname = "  Heart  ";
 int debug=1;
 int erster_buchungstag=1; //0 gleich anreise //1 gleich ab ersten spieltag
 
@@ -68,7 +68,7 @@ LiquidCrystal_I2C lcd(0x27,20,4);//GELB
 //LiquidCrystal_I2C lcd(0x3F,20,4); //BLAU
 
 RTC_DS3231 rtc;
-bool input_over_rotary=true; //false = poti & button
+bool input_over_rotary=false; //false = poti & button
 
 //*************************************************************************************//
 //HARDWARE Version Sascha Orgaplex

@@ -16,7 +16,7 @@ long puffer=0;
 Serial.println(F("BERECHNUNG"));
 Serial.print(F("Raywert start:"));Serial.println(raywert);
 
-//if(Last_Booking_read>aktuell_time){Last_Booking_read=aktuell_time;}
+
  
 if(LifeCleaner_effekt_read==0){
   LC_aktiv=0;
@@ -62,7 +62,11 @@ max_play=Con_Start_read+rest_time+1+(86400*anzahl_tage_maximal);
       }
     // im Spiel ohne LC
      if(max_play>=aktuell_time&&LC_aktiv==0&&aktuell_time > (Con_Start_read+rest_time+1)){
+        Serial.print("Delta-letzte Buchung:");Serial.println(aktuell_time-Last_Booking_read);
+        if(aktuell_time<Last_Booking_read){delta=0;}
+       else{
       delta=(aktuell_time-Last_Booking_read)*tagesdosis/86400;
+       }
      // delta=delta/1000;
      
           Serial.print(F("delta2:"));Serial.println(delta);

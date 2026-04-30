@@ -119,24 +119,24 @@ myprint("-----------------------------------------------------------------------
 void lichtertest(){
 
 digitalWrite(relaisPin[0],!geschaltet);
-delay(1000);
+delay(500);
 digitalWrite(relaisPin[1],!geschaltet);
-delay(1000);
+delay(500);
 digitalWrite(relaisPin[2],!geschaltet);
-delay(1000);
+delay(500);
 digitalWrite(relaisPin[3],!geschaltet);
-delay(1000);
+delay(500);
 pixels2.clear();
 pixels2.show();  
 pixels1.clear();
 pixels1.show();  
 
 digitalWrite(relaisPin[0],geschaltet);
-delay(1000);
+delay(500);
 digitalWrite(relaisPin[1],geschaltet);
-delay(1000);
+delay(500);
 digitalWrite(relaisPin[2],geschaltet);
-delay(1000);
+delay(500);
 digitalWrite(relaisPin[3],geschaltet);
 
 
@@ -150,7 +150,7 @@ delay(5);
 
 for (int x=160;x>15;x--){
 myservo_anzeige.write(x);
-delay(50);
+delay(10);
 }
 
       Serial.println();  

@@ -60,11 +60,13 @@ max_play=Con_Start_read+rest_time+1+(86400*anzahl_tage_maximal);
         raywert2=raywert;
         Serial.print(F("Ray zufrüh:"));Serial.println(raywert2);
       }
-    // im Spiel ohne LC
+ // im Spiel ohne LC
      if(max_play>=aktuell_time&&LC_aktiv==0&&aktuell_time > (Con_Start_read+rest_time+1)){
+        Serial.print("Delta-letzte Buchung:");Serial.println(aktuell_time-Last_Booking_read);
+        if(aktuell_time<Last_Booking_read){delta=0;}
+       else{
       delta=(aktuell_time-Last_Booking_read)*tagesdosis/86400;
-     // delta=delta/1000;
-     
+       }
           Serial.print(F("delta2:"));Serial.println(delta);
           raywert=raywert+delta;
           

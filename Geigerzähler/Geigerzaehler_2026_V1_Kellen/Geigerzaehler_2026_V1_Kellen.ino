@@ -179,8 +179,8 @@ void loop(){
 
 if(start==0){ // um einmal die uhrzeit anzuzeigen
    Serial.printf("Momentane Zeit: %4d-%02d-%02d %02d:%02d:%02d", now.year(), now.month(), now.day(), now.hour(), now.minute(), now.second());
-      Serial.println();
-
+    Serial.println();
+    Serial.println(aktuell_time);
     
     start=1;
 }

@@ -8,7 +8,7 @@
 #include <LiquidCrystal_I2C.h>
 //*****************************************************************************************//
 
-#define lCD_Version 4
+#define lCD_Version 2
 //1= großes LCD gelb  3= große LCD blau 2= kleines LCD gelb  4= kleines LCD blau 5=Dominik
 //*****************************************************************************************//
 //RFID
@@ -213,6 +213,7 @@ void loop(){
 if(start==0){ // um einmal die uhrzeit anzuzeigen
    Serial.printf("Momentane Zeit: %4d-%02d-%02d %02d:%02d:%02d", now.year(), now.month(), now.day(), now.hour(), now.minute(), now.second());
       Serial.println();
+      Serial.println(aktuell_time);
         lcd.setCursor(0, 0);
         lcd.print(now.year(), DEC);
         lcd.print('/');

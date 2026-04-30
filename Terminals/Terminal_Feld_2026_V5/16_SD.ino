@@ -211,7 +211,12 @@ void initialisierung2() {
   while (1);
  }
  Serial.println(F("Uhr ok"));
-
+if(input_over_rotary==false){
+  Serial.println( "Poti+Button");
+}
+else{
+  Serial.println( "Rotation");
+}
   }
 
 
