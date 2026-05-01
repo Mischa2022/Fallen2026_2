@@ -142,7 +142,7 @@ void setup()
   mfrc522.PCD_Init();
 
       RTC.begin();
-  if (! RTC.isrunning()) {
+  if ( !RTC.isrunning()) {
     RTC.adjust(DateTime(__DATE__, __TIME__));
   }
   

@@ -206,6 +206,16 @@ Serial2.println("y");
 
         if (currentMillis - previousMillis >= intervall) {
               Serial2.println("y"); 
+
+                pixels1.clear();
+    pixels1.show();  
+    
+  for(int i=0; i<NUMPIXELS; i++) {
+    pixels2.setPixelColor(i, pixels2.Color(50, 0,0));
+    pixels2.show();   
+   
+      } 
+            
               ziel_char='b';
               ziel_long=1;  
               sorte=1;
@@ -215,10 +225,24 @@ Serial2.println("y");
         
         if(sorte!=0){
          ziel_long=sorte; 
+
+   
+            pixels1.clear();
+            pixels1.show();  
+    
+        for(int i=0; i<NUMPIXELS; i++) {
+          pixels2.setPixelColor(i, pixels2.Color(0, 50,50));
+          pixels2.show();   
+   
+           
+
+        }   
          break;
           }
          
       }
+
+
 
   //Serielle Abfrage was aufgerufen werden soll
   serial_read(ziel_char,ziel_long,'\n');
