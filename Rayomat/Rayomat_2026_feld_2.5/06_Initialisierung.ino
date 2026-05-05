@@ -1,7 +1,7 @@
 
 void initialisierung2() {
   char read_Char4;  //konfig import sd
-  Serial2.println("y");
+ // Serial2.println("y");
     Serial.println( F("Initialisierung"));
    Serial.println(  Terminalname);
 //SD-Check 

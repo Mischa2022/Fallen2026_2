@@ -300,16 +300,17 @@ void setup() {
 randomSeed(analogRead(0));
 
 Serial.begin(57600); 
-Serial2.begin(57600); 
-Wire.begin();        
+//Serial2.begin(57600); 
+Wire.begin(); 
+delay(50);       
 SPI.begin();
-
+delay(50);
 rtc.begin();
 
 mfrc522.PCD_Init(); 
 delay(100);
 SD.begin(chipSelect);
-
+delay(50);
 nfc.begin();
 nfc.SAMConfig();
 
