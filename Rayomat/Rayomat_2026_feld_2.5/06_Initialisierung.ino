@@ -1,7 +1,7 @@
 
 void initialisierung2() {
   char read_Char4;  //konfig import sd
- // Serial2.println("y");
+
     Serial.println( F("Initialisierung"));
    Serial.println(  Terminalname);
 //SD-Check 
@@ -58,7 +58,7 @@ mfrc522.PCD_DumpVersionToSerial();
 t = rtc.now();      
 aktuell_time=t.unixtime();
 rest_time=86400- ((con_start_time+(UTC*UNIX_korrektur))%86400); 
-  Serial.println(aktuell_time);
+Serial.println(aktuell_time);
   
 //Uhrcheck
   if( aktuell_time<(con_start_time-432000)||aktuell_time > 1893452460){
@@ -104,8 +104,8 @@ unsigned long a_t_korrektur=0;
       con_tag=con_tag_bestimmen(aktuell_time,con_start_time,rest_time);
       Serial.write("Contag:");
       Serial.println(con_tag);
-myprint("----------------------------------------------------------------------------------------","","",true,true,false,1,port);
-myprint("----------------------------------------------------------------------------------------","","",true,true,false,1,port);  
+  myprint("----------------------------------------------------------------------------------------","","",true,true,false,1,port);
+  myprint("----------------------------------------------------------------------------------------","","",true,true,false,1,port);  
         
 
       Serial.println();  
@@ -118,46 +118,46 @@ myprint("-----------------------------------------------------------------------
 
 void lichtertest(){
 
-digitalWrite(relaisPin[0],!geschaltet);
-delay(500);
-digitalWrite(relaisPin[1],!geschaltet);
-delay(500);
-digitalWrite(relaisPin[2],!geschaltet);
-delay(500);
-digitalWrite(relaisPin[3],!geschaltet);
-delay(500);
-pixels2.clear();
-pixels2.show();  
-pixels1.clear();
-pixels1.show();  
+  digitalWrite(relaisPin[0],!geschaltet);
+  delay(500);
+  digitalWrite(relaisPin[1],!geschaltet);
+  delay(500);
+  digitalWrite(relaisPin[2],!geschaltet);
+  delay(500);
+  digitalWrite(relaisPin[3],!geschaltet);
+  delay(500);
+  pixels2.clear();
+  pixels2.show();  
+  pixels1.clear();
+  pixels1.show();  
 
-digitalWrite(relaisPin[0],geschaltet);
-delay(500);
-digitalWrite(relaisPin[1],geschaltet);
-delay(500);
-digitalWrite(relaisPin[2],geschaltet);
-delay(500);
-digitalWrite(relaisPin[3],geschaltet);
+  digitalWrite(relaisPin[0],geschaltet);
+  delay(500);
+  digitalWrite(relaisPin[1],geschaltet);
+  delay(500);
+  digitalWrite(relaisPin[2],geschaltet);
+  delay(500);
+  digitalWrite(relaisPin[3],geschaltet);
 
 
-buzzer_play( 5,300);
-Serial2.println("y");
+  buzzer_play( 5,300);
 
-for (int x=180;x>0;x--){
-myservo_wippe.write(x);
-delay(5);
-}
 
-for (int x=160;x>15;x--){
-myservo_anzeige.write(x);
-delay(10);
-}
+  for (int x=180;x>0;x--){
+      myservo_wippe.write(x);
+      delay(5);
+    }
+
+  for (int x=160;x>15;x--){
+      myservo_anzeige.write(x);
+      delay(10);
+    }
 
       Serial.println();  
       Serial.println(F("Lichttest fertig"));
       Serial.println();
 
-  }
+}
 
 
 

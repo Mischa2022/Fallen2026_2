@@ -1,6 +1,6 @@
 // Konfiguration: Spieler-TAG = MFRC522 / Medi-TAG = PN532
   void main_rayomat(){
-    // Serial.println(F("Ray_o_Matic 2000 startet buchung"));
+    
  long currentMillis;
 t = rtc.now();      
 aktuell_time=t.unixtime();
@@ -149,6 +149,7 @@ aktuell_time=t.unixtime();
                    ziel_char=' '; 
                             
       break;
+      
 //Medilogs löschen
       case '=':    buzzer_play( 1,100);
           
@@ -183,10 +184,7 @@ aktuell_time=t.unixtime();
     return;
   
   }
-Serial2.println("y");
 
-  //Hauptfunktion um Medis zu erkennen, die eingeworfen wurden. Gibt ziel_char und ziel_long weiter als ob man es per seriell eingegeben hat
-  //je nach Reader muss der richtige aktiviert werden
  
   while( sorte==0){
     pixels1.clear();
@@ -205,10 +203,10 @@ Serial2.println("y");
 
 
         if (currentMillis - previousMillis >= intervall) {
-              Serial2.println("y"); 
+           
 
                 pixels1.clear();
-    pixels1.show();  
+                pixels1.show();  
     
   for(int i=0; i<NUMPIXELS; i++) {
     pixels2.setPixelColor(i, pixels2.Color(50, 0,0));
@@ -242,11 +240,9 @@ Serial2.println("y");
          
       }
 
-
-
-  //Serielle Abfrage was aufgerufen werden soll
+//Serielle Abfrage was aufgerufen werden soll
   serial_read(ziel_char,ziel_long,'\n');
-//Serial2.println("y");      
+  
   switch (ziel_char){   
 
 //Ausführliche Analyse
@@ -265,7 +261,7 @@ Serial2.println("y");
         
  
       Tag_analyse(ziel_long,0); 
-      Serial2.println("y");     
+         
       /*wert um check_rfid zu beeinflussen, zweiter wert für ausführlich==1 oder standard ==0
       * Man könnte auch eine Funktionalität schaffen um die Analsyse auch über Seriell zu wählen.
       * Tag_analyse(1,0); 
@@ -291,7 +287,7 @@ Serial2.println("y");
       case 'b':
       buzzer_play( 1,100);
       Serial.print(F("Grund:"));Serial.println(Medi[ziel_long-1]);
-    Serial2.println("y"); 
+  
       if(ziel_long>0&&ziel_long<9){
          if(ziel_long>1&&ziel_long<=7){
         
@@ -317,7 +313,7 @@ Serial2.println("y");
       ziel_char=' ';  
       ziel_long=0;
       flow=1;
-      Serial2.println("y"); 
+    
        /*
       * 1 Update
       * 2 Nanoclean 
@@ -366,11 +362,11 @@ Serial2.println("y");
     
 
     flow=0;
-   // Pin_state=LOW;
+
     pixels2.clear();
     pixels2.show(); 
-    Serial2.println("y");
+ 
   }
-//Serial2.println("y");
+
 return;
 }

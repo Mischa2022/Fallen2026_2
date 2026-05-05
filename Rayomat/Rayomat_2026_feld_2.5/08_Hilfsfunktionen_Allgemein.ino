@@ -43,7 +43,7 @@ int reset_variablen(){
   feedback=0;
   typus=0;
   read_String2="";
-       msg1="";
+     msg1="";
      msg2="";
      msg3="";
      msg4="";
@@ -52,11 +52,11 @@ int reset_variablen(){
      //counterx = 0;
      sorte=0;
      //raywert=0;
-       myprint("","","",true,true,false,1,port);
-pixels1.clear();
-pixels2.clear();
-pixels1.show();
-pixels2.show();
+    myprint("","","",true,true,false,1,port);
+    pixels1.clear();
+    pixels2.clear();
+    pixels1.show();
+    pixels2.show();
     mfrc522.PICC_HaltA();   //finale stopfunktion
     mfrc522.PCD_StopCrypto1();//finale stopfunktion
 
@@ -101,8 +101,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
 
           servo_value2=165;
-       //  servo_value2=5;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 1: digitalWrite(relaisPin[1],!geschaltet);
@@ -110,8 +109,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
 
           servo_value2=155;
-        //  servo_value2=20;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 2: digitalWrite(relaisPin[1], !geschaltet);
@@ -119,8 +117,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
 
           servo_value2=145;
-         // servo_value2=40;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 3: digitalWrite(relaisPin[1], !geschaltet);
@@ -128,8 +125,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
 
           servo_value2=120;
-         // servo_value2=60;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2); 
+
   break;
   
   case 4: digitalWrite(relaisPin[1], geschaltet);
@@ -137,8 +133,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
  
           servo_value2=100;
-        //  servo_value2=80;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 5: digitalWrite(relaisPin[1], geschaltet);
@@ -146,8 +141,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
 
           servo_value2=90;
-        //  servo_value2=100;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 6: digitalWrite(relaisPin[1], geschaltet);
@@ -155,8 +149,7 @@ switch(relais){
           digitalWrite(relaisPin[3], geschaltet);
 
           servo_value2=60;
-       //   servo_value2=120;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 7: digitalWrite(relaisPin[1], geschaltet);
@@ -164,8 +157,8 @@ switch(relais){
           digitalWrite(relaisPin[3], !geschaltet);
 
           servo_value2=40;
-      //    servo_value2=140;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
+
   break;
   
   case 8: digitalWrite(relaisPin[1], geschaltet);
@@ -173,8 +166,7 @@ switch(relais){
           digitalWrite(relaisPin[3], !geschaltet);
 
           servo_value2=30;
-       //   servo_value2=160;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
   break;
   
   case 9: digitalWrite(relaisPin[1], geschaltet);
@@ -182,8 +174,8 @@ switch(relais){
           digitalWrite(relaisPin[3], !geschaltet);
  
           servo_value2=10;
-       //   servo_value2=175;
-//Serial.print(relais);Serial.print(" Servowert:");Serial.println(servo_value2);
+
+
   break;
 }
 
@@ -191,7 +183,7 @@ myservo_anzeige.attach(11);
 
 for (int x=0;x<=servo_value2;x++){
 myservo_anzeige.write(x);
-//Serial.print("Ray:");Serial.print(state);Serial.print(" |");Serial.println(x);
+
 delay(5);
 }
 
@@ -212,18 +204,7 @@ myservo_wippe.detach();
 }
 
 //*****************************************************************************************//
-void blinken(){
-  
-    
-    digitalWrite(ledPin1,HIGH);
-    delay(1000);
-    
-    digitalWrite(ledPin1,LOW);
-    delay(1000);
-  
-}
 
-//*****************************************************************************************//
 void blinki(int muster, int farbe,int neo){
 
 #define DELAYVAL 50 // Time (in milliseconds) to pause between pixels
@@ -254,7 +235,7 @@ if(neo==1){
 pixels1.clear();
   
 if(muster==0){
-//  pixels2.clear(); // Set all pixel colors to 'off'
+
 
     
   for(int i=0; i<NUMPIXELS; i++) {
@@ -267,12 +248,11 @@ if(muster==0){
     pixels2.show();   
     delay(DELAYVAL); 
       }  
-   //   pixels2.clear();
-   //   pixels2.show();  
+
   }
 
 if(muster==1){
-//  pixels2.clear(); // Set all pixel colors to 'off'
+
   
    for(int i=0; i<13; i++) {
     pixels2.setPixelColor(i, pixels2.Color(r, g, b));
@@ -280,12 +260,11 @@ if(muster==1){
     pixels2.show();   
     delay(DELAYVAL); 
     }
- //   pixels2.clear();
- //   pixels2.show();  
+ 
   }
 
 if(muster==2){
- // pixels2.clear(); // Set all pixel colors to 'off'
+
 
    for(int i=0; i<14; i++) {
     pixels2.setPixelColor(i, pixels2.Color(r, g, b));
@@ -295,11 +274,11 @@ if(muster==2){
     pixels2.show();   
     delay(DELAYVAL); 
     }
-//    pixels2.clear();
+
   }
 
 if(muster==3){
-//  pixels2.clear(); // Set all pixel colors to 'off'
+
 
    for(int i=12; i<25; i++) {
     pixels2.setPixelColor(i, pixels2.Color(r, g, b));
@@ -307,7 +286,7 @@ if(muster==3){
     pixels2.show();   
     delay(DELAYVAL); 
     }
-//    pixels2.clear();
+
   }
  
 }
@@ -315,7 +294,7 @@ else{
 pixels2.clear(); 
 
 if(muster==0){
-//  pixels1.clear(); // Set all pixel colors to 'off'
+
 
     
   for(int i=0; i<NUMPIXELS; i++) {
@@ -328,11 +307,11 @@ if(muster==0){
     pixels1.show();   
     delay(DELAYVAL); 
       }  
-  //    pixels1.clear();
+
   }
 
 if(muster==1){
- // pixels1.clear(); // Set all pixel colors to 'off'
+
   
    for(int i=0; i<13; i++) {
     pixels1.setPixelColor(i, pixels1.Color(r, g, b));
@@ -340,11 +319,11 @@ if(muster==1){
     pixels1.show();   
     delay(DELAYVAL); 
     }
-//    pixels1.clear();
+
   }
 
 if(muster==2){
-//  pixels1.clear(); // Set all pixel colors to 'off'
+
 
    for(int i=0; i<14; i++) {
     pixels1.setPixelColor(i, pixels1.Color(r, g, b));
@@ -354,11 +333,11 @@ if(muster==2){
     pixels1.show();   
     delay(DELAYVAL); 
     }
-//    pixels1.clear();
+
   }
 
 if(muster==3){
-//  pixels1.clear(); // Set all pixel colors to 'off'
+
 
    for(int i=12; i<25; i++) {
     pixels1.setPixelColor(i, pixels1.Color(r, g, b));
@@ -366,9 +345,9 @@ if(muster==3){
     pixels1.show();   
     delay(DELAYVAL); 
     }
- //   pixels1.clear();
+
   }
- // pixels1.clear();
+
 }  
 
 }

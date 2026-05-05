@@ -16,18 +16,18 @@ char*Terminalname = "Rayomatic 1";
 char*geraete_id="Ray_SM_1";
 int debug=1;
 int erster_buchungstag=1; //0 gleich anreise //1 gleich ab ersten spieltag
-
 int port=0;
 
 //RFID
 #define RST_PIN         7     //neue Platine      
-#define SS_PIN          22    //neue Platine        
+#define SS_PIN          22    //neue Platine   
+     
 //SD
-const int chipSelect = 31;//neue Platine  
+#define chipSelect  31  //neue Platine  
 
-//LED
-const int ledPin1 = 5; //neue Platine  // A2 Dongel anwesend? "An" ansonsten "Aus"
-const int ledPin2 = 33; //neue Platine  // nur für meine Spielhardware
+//Pixel
+#define PIN1        A2 //
+#define PIN2        A14 //
 
 //Relais
 int relaisPin[] ={36,38,40,42}; //reihenfolge muss getestet werden
@@ -35,20 +35,13 @@ bool geschaltet =1; //1=invertiert on / off der Relais
 long wartezeit =5000; // Wartezeit nach schalten der Relais, bis es weiter geht.
 
 // buzzer
-const int buzzer_pin = 6; //neue Platine
-//
-//long intervall=10000; //Wartezeit nach einlegen des Spielerdongels und automatisch weitermachen und nicht mehr warten auf Medi
-long intervall=7000; //Wartezeit nach einlegen des Spielerdongels und automatisch weitermachen und nicht mehr warten auf Medi
+#define buzzer_pin  6 //neue Platine
+
 // Servo
-Servo myservo_anzeige;
-Servo myservo_wippe;
+#define myservo_anzeige_pin 11
+#define myservo_wippe_pin   13
 
-#define tresor          45
-#define geschlossen     90
-#define rueckgabe        135
-int servo_value; //puffer für wippe
-
-//Con_Spezifikationen // werden über Konfig gefüllt
+//Con_Spezifikationen 
 //*************************************************************************************//
 String basis_konfig ="*FALLEN2026*1777449600*0*60*4*48*48*48*2*1*24*3*1*25*25*3*1*75*75*2*2*10*15*6*2*";
 String basis2[26];
@@ -57,7 +50,6 @@ String neu_konfig;//für konfig import
 String neu[26];//für konfig import
 bool warten = false;//für konfig import
 
-
 String Con_Name=""; //Beispiel Conname, wird normalerweise aus der Konfig gefüllt
 unsigned long con_start_time;        // con-startzeit wird über Konfig gefüllt.
 unsigned long tagesdosis; 
@@ -65,8 +57,6 @@ unsigned long konfig_time;
 int anzahl_tage; //für bestimmung aktuellen Tag 0=Anreisetag, 1=erster Spieltag usw. wird durch konfig gefüllt bedeutet maximal 5 spieltage ohne anreisetag
 int UTC; // Zeitzone, wird durch Konfig gefüllt und muss nun wieder aktiv genutzt werden 2=Sommer 1=Winter unixtime wird mit 0 ausgegeben
 
-//Con_Spezifikationen // werden nicht über Konfig gefüllt 
-//*************************************************************************************//
 unsigned long minimum_ray_writing =10000UL;  //minimum Raywert der beim Schreiben nicht unterschritten werden darf
 unsigned long maximum_ray_writing =450000UL; //maximum Raywert der beim Schreiben nicht überschritten werden darf
 
@@ -154,7 +144,7 @@ unsigned long Dekon_read[14];
 unsigned long LifeCleaner_read[10];
 unsigned long Cleanray_read[8];
 unsigned long BloodClean_read[10];
-  unsigned long raywert=0;
+unsigned long raywert=0;
   
 //Puffer für Medis und ihre Auswirkungen wird durch Konfig und Check_rfid gefüllt
 //*************************************************************************************//
@@ -258,6 +248,21 @@ int neo_select;
 Adafruit_NeoPixel pixels1(NUMPIXELS, PIN1, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel pixels2(NUMPIXELS, PIN2, NEO_GRB + NEO_KHZ800);
 
+// Servo
+Servo myservo_anzeige;
+Servo myservo_wippe;
+
+#define tresor          45
+#define geschlossen     90
+#define rueckgabe        135
+int servo_value; //puffer für wippe
+long intervall=7000; //Wartezeit nach einlegen des Spielerdongels und automatisch weitermachen und nicht mehr warten auf Medi
+
+//Button
+//*************************************************************************************//
+bool Pin_state=0;
+#define button_Pin  18
+
 //Serielle Kommunikation
 //*************************************************************************************//
 #define anzahl_werte 11
@@ -267,12 +272,11 @@ String read_String = "";
 String read_String2 = "";
 char ziel_char=' '; //nachdem auswerten dieses chars, muss unbedingt ' ' wieder gesetzt werden
 char char_read[anzahl_werte];
+char* Medi[] {"Update     ","Nanoclean  ","Dekon      ","Lifecleaner","Bloodclean ","Cleanray   ","Drawback   "};
 int werte[anzahl_werte];
 int counter=0;
 bool stringComplete = false;  
 bool flow=0;
-
-char* Medi[] {"Update     ","Nanoclean  ","Dekon      ","Lifecleaner","Bloodclean ","Cleanray   ","Drawback   "};
 
 //Fehlerzähler & Rechenhilfen
 //*************************************************************************************//
@@ -285,13 +289,6 @@ int feedback; //counter für erfolgreiches testen eines keys
 int sorte=0;
 unsigned long previousMillis=0;
 int test =0;
-//long raywert;
-
-//Interrupt
-//*************************************************************************************//
-bool Pin_state=0;
-const byte Pin = 18; //2, 3, 18, 19
-
 
 //*************************************************************************************//
 
@@ -300,7 +297,6 @@ void setup() {
 randomSeed(analogRead(0));
 
 Serial.begin(57600); 
-//Serial2.begin(57600); 
 Wire.begin(); 
 delay(50);       
 SPI.begin();
@@ -318,23 +314,20 @@ nfc.SAMConfig();
   pixels2.begin();
 
 pinMode(buzzer_pin, OUTPUT);
-pinMode(ledPin1, OUTPUT);
-pinMode(ledPin2, OUTPUT);
 pinMode(relaisPin[0], OUTPUT);
 pinMode(relaisPin[1], OUTPUT);
 pinMode(relaisPin[2], OUTPUT);
 pinMode(relaisPin[3], OUTPUT);
-digitalWrite(ledPin1,LOW);
-digitalWrite(ledPin2,LOW);
+
 digitalWrite(relaisPin[0],geschaltet);
 digitalWrite(relaisPin[1],geschaltet);
 digitalWrite(relaisPin[2],geschaltet);
 digitalWrite(relaisPin[3],geschaltet);
 
-myservo_anzeige.attach(11);
-myservo_wippe.attach(13);
+myservo_anzeige.attach(myservo_anzeige_pin);
+myservo_wippe.attach(myservo_wippe_pin);
 
-pinMode(Pin, INPUT_PULLUP);
+pinMode(button_Pin, INPUT_PULLUP);
 
 initialisierung2();
 
@@ -350,7 +343,7 @@ myservo_wippe.detach();
 
 void loop() {
 
- Pin_state=digitalRead(Pin);
+ Pin_state=digitalRead(button_Pin);
   
 
  if(Pin_state==HIGH){
@@ -368,7 +361,7 @@ void loop() {
     neo_select=0;
     blinki(99,99,neo_select);
     delay(1500);
-    Serial2.println("y");
+
  }
   
 }
